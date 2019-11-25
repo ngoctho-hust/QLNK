@@ -9,11 +9,12 @@ import model.NhanKhau;
 import model.SoHoKhau;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application {
 
-    public ArrayList<SoHoKhau> soHoKhauArrayList;
-    public ArrayList<NhanKhau> nhanKhauArrayList;
+    public static List<SoHoKhau> soHoKhauArrayList = new ArrayList<>();
+    public static List<NhanKhau> nhanKhauArrayList = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/quanLyHoKhau.fxml"));
