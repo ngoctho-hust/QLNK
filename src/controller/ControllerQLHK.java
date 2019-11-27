@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.SoHoKhau;
 
-import java.awt.event.ActionEvent;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,21 +42,23 @@ public class ControllerQLHK implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addList();
         tableColumnMaHoKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("maHoKhau"));
         tableColumnTenChuHo.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("tenChuHo"));
         tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("CCCD"));
         tableColumnDiaCHi.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("DiaChi"));
         tableColumnSoNhanKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("soNhanKhau"));
-        tableViewHoKhau.setItems(soHoKhauObservableList);
+        addList();
         btn1.setOnAction(event -> {
-            txtTenChuHo.setText("Test");
+            soHoKhauObservableList.remove(1);
+            tableViewHoKhau.refresh();
         });
     }
 
     public void addList(){
         Main.soHoKhauArrayList.add(new SoHoKhau(1,"Nguyen Văn A", "2313313", "Bach Khoa, Hai Ba Trung, Ha Noi", 2));
-        Main.soHoKhauArrayList.add(new SoHoKhau(2, "Nguyen Van B", "34234343", "Thanh Nha, Hai Ba Trung, Ha Noi", 3));
+        Main.soHoKhauArrayList.add(new SoHoKhau(2, "Nguyen Van B", "34234343", "Thanh Nhan, Hai Ba Trung, Ha Noi", 3));
+        Main.soHoKhauArrayList.add(new SoHoKhau(3, "Le Thi C", "656363455", "Bach Mai, Hai Ba Trung, Ha Noi", 4));
         soHoKhauObservableList = FXCollections.observableList(Main.soHoKhauArrayList);
+        tableViewHoKhau.setItems(soHoKhauObservableList);
     }
 }
