@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QLNK.iml" beforeDir="false" afterPath="$PROJECT_DIR$/QLNK.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/ControllerQLHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/ControllerQLHK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/model/NhanKhau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/model/NhanKhau.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/model/SoHoKhau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/model/SoHoKhau.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerQLHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerQLHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SoHoKhau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SoHoKhau.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -76,7 +78,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1U3tqcaqlKVZZMVRBV0DSf5qnzW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -90,6 +94,10 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jdbc/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre8.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunDashboard">

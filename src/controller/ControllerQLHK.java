@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,13 +13,15 @@ import model.SoHoKhau;
 
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerQLHK implements Initializable {
     @FXML
     private TableView tableViewHoKhau;
     @FXML
-    private TableColumn<SoHoKhau, Integer> tableColumnMaHoKhau;
+    private TableColumn<SoHoKhau, String> tableColumnMaHoKhau;
     @FXML
     private TableColumn<SoHoKhau, String> tableColumnTenChuHo;
     @FXML
@@ -42,22 +43,31 @@ public class ControllerQLHK implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableColumnMaHoKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("maHoKhau"));
+        tableColumnMaHoKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("maHoKhau"));
         tableColumnTenChuHo.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("tenChuHo"));
         tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("CCCD"));
         tableColumnDiaCHi.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("DiaChi"));
         tableColumnSoNhanKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("soNhanKhau"));
         addList();
         btn1.setOnAction(event -> {
-            soHoKhauObservableList.remove(1);
-            tableViewHoKhau.refresh();
+            String tenChuHo = txtTenChuHo.getText();
+            String maHoKhau = txtMaHoKhau.getText();
+            String CCCD = txtCCCD.getText();
+            int n = Main.soHoKhauArrayList.size();
+            List<SoHoKhau> searchList = new ArrayList<>();
+            for (int i=0; i<n; i++){
+                if (maHoKhau.equals(Main.soHoKhauArrayList.get(i).getMaHoKhau())){
+                    searchList.add(Main.soHoKhauArrayList.get(i));
+                }
+            }
+            soHoKhauObservableList = FXCollections.observableArrayList(searchList);
+            tableViewHoKhau.setItems(soHoKhauObservableList);
         });
     }
 
     public void addList(){
-        Main.soHoKhauArrayList.add(new SoHoKhau(1,"Nguyen Văn A", "2313313", "Bach Khoa, Hai Ba Trung, Ha Noi", 2));
-        Main.soHoKhauArrayList.add(new SoHoKhau(2, "Nguyen Van B", "34234343", "Thanh Nhan, Hai Ba Trung, Ha Noi", 3));
-        Main.soHoKhauArrayList.add(new SoHoKhau(3, "Le Thi C", "656363455", "Bach Mai, Hai Ba Trung, Ha Noi", 4));
+        ConnectSQLServer cndb =  new ConnectSQLServer();
+        cndb.pullData();
         soHoKhauObservableList = FXCollections.observableList(Main.soHoKhauArrayList);
         tableViewHoKhau.setItems(soHoKhauObservableList);
     }

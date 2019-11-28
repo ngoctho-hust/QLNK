@@ -1,13 +1,13 @@
 package model;
 
 public class SoHoKhau {
-    private int maHoKhau;
+    private String maHoKhau;
     private String tenChuHo;
     private String CCCD;
     private String diaChi;
     private int soNhanKhau;
 
-    public SoHoKhau(int maHoKhau, String tenChuHo, String CCCD, String diaChi, int soNhanKhau) {
+    public SoHoKhau(String maHoKhau, String tenChuHo, String CCCD, String diaChi, int soNhanKhau) {
         this.maHoKhau = maHoKhau;
         this.tenChuHo = tenChuHo;
         this.CCCD = CCCD;
@@ -15,11 +15,11 @@ public class SoHoKhau {
         this.soNhanKhau = soNhanKhau;
     }
 
-    public int getMaHoKhau() {
+    public String getMaHoKhau() {
         return maHoKhau;
     }
 
-    public void setMaHoKhau(int maHoKhau) {
+    public void setMaHoKhau(String maHoKhau) {
         this.maHoKhau = maHoKhau;
     }
 
