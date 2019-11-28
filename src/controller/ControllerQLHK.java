@@ -2,6 +2,8 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,13 +33,7 @@ public class ControllerQLHK implements Initializable {
     @FXML
     private TableColumn<SoHoKhau, Integer> tableColumnSoNhanKhau;
     @FXML
-    private Button btn1;
-    @FXML
-    private TextField txtMaHoKhau;
-    @FXML
-    private TextField txtTenChuHo;
-    @FXML
-    private TextField txtCCCD;
+    private TextField txtTimKiem;
 
     private ObservableList<SoHoKhau> soHoKhauObservableList;
 
@@ -48,27 +44,35 @@ public class ControllerQLHK implements Initializable {
         tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("CCCD"));
         tableColumnDiaCHi.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("DiaChi"));
         tableColumnSoNhanKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("soNhanKhau"));
-        addList();
-        btn1.setOnAction(event -> {
-            String tenChuHo = txtTenChuHo.getText();
-            String maHoKhau = txtMaHoKhau.getText();
-            String CCCD = txtCCCD.getText();
-            int n = Main.soHoKhauArrayList.size();
-            List<SoHoKhau> searchList = new ArrayList<>();
-            for (int i=0; i<n; i++){
-                if (maHoKhau.equals(Main.soHoKhauArrayList.get(i).getMaHoKhau())){
-                    searchList.add(Main.soHoKhauArrayList.get(i));
-                }
-            }
-            soHoKhauObservableList = FXCollections.observableArrayList(searchList);
-            tableViewHoKhau.setItems(soHoKhauObservableList);
-        });
-    }
 
-    public void addList(){
+
+        soHoKhauObservableList = FXCollections.observableList(Main.soHoKhauArrayList);
+
         ConnectSQLServer cndb =  new ConnectSQLServer();
         cndb.pullData();
-        soHoKhauObservableList = FXCollections.observableList(Main.soHoKhauArrayList);
-        tableViewHoKhau.setItems(soHoKhauObservableList);
+
+        FilteredList<SoHoKhau> filteredList = new FilteredList<>(soHoKhauObservableList, p ->true);
+        txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
+            filteredList.setPredicate(soHoKhau->{
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (soHoKhau.getMaHoKhau().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if(soHoKhau.getTenChuHo().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if(soHoKhau.getCCCD().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+        });
+        SortedList<SoHoKhau> hoKhauSortedList = new SortedList<>(filteredList);
+
+        hoKhauSortedList.comparatorProperty().bind(tableViewHoKhau.comparatorProperty());
+        tableViewHoKhau.setItems(hoKhauSortedList);
     }
 }
