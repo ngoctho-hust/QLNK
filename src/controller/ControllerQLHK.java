@@ -4,19 +4,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import model.SoHoKhau;
 
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerQLHK implements Initializable {
@@ -34,6 +41,8 @@ public class ControllerQLHK implements Initializable {
     private TableColumn<SoHoKhau, Integer> tableColumnSoNhanKhau;
     @FXML
     private TextField txtTimKiem;
+    @FXML
+    private Button btnQLNK;
 
     private ObservableList<SoHoKhau> soHoKhauObservableList;
 
@@ -51,6 +60,21 @@ public class ControllerQLHK implements Initializable {
         ConnectSQLServer cndb =  new ConnectSQLServer();
         cndb.pullData();
 
+        btnQLNK.setOnAction(actionEvent->{
+            try {
+                Parent blad = FXMLLoader.load(getClass().getResource("/view/quanLyNhanKhau.fxml"));
+                Scene scene = new Scene(blad);
+                Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Image image = new Image("/drawable/icon.png");
+                appStage.getIcons().add(image);
+                appStage.setTitle("QLNK");
+                appStage.setScene(scene);
+                appStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
         FilteredList<SoHoKhau> filteredList = new FilteredList<>(soHoKhauObservableList, p ->true);
         txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
             filteredList.setPredicate(soHoKhau->{

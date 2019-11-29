@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.NhanKhau;
 import model.SoHoKhau;
@@ -20,7 +21,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/quanLyHoKhau.fxml"));
-        primaryStage.setTitle("Quản lý hộ khẩu nhân khẩu");
+        Image image = new Image("/drawable/icon.png");
+        primaryStage.getIcons().add(image);
+        primaryStage.setTitle("QLHK");
         primaryStage.setScene(new Scene(root, 1510, 810));
         primaryStage.show();
     }
