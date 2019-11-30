@@ -1,6 +1,7 @@
 package model;
 
 public class NhanKhau {
+    private String quanHe;
     private String maNhanKhau;
     private String hoTen;
     private String ngaySinh;
@@ -20,6 +21,14 @@ public class NhanKhau {
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.maHoKhau = maHoKhau;
+    }
+
+    public String getQuanHe() {
+        return quanHe;
+    }
+
+    public void setQuanHe(String quanHe) {
+        this.quanHe = quanHe;
     }
 
     public String getMaNhanKhau() {
