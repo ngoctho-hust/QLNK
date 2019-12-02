@@ -14,6 +14,10 @@ public class NhanKhau {
     private String ngheNghiep;
     private String noiLamViec;
     private String noiThuongTruTruocKhiChuyenDen;
+    private String cmnd;
+    private boolean death;
+    private String tonGiao;
+
 
     public NhanKhau(String maNhanKhau, String hoTen, String ngaySinh, String gioiTinh, String maHoKhau) {
         this.maNhanKhau = maNhanKhau;
@@ -125,5 +129,29 @@ public class NhanKhau {
 
     public void setNoiThuongTruTruocKhiChuyenDen(String noiThuongTruTruocKhiChuyenDen) {
         this.noiThuongTruTruocKhiChuyenDen = noiThuongTruTruocKhiChuyenDen;
+    }
+
+    public String getCmnd() {
+        return cmnd;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
+    }
+
+    public boolean isDeath() {
+        return death;
+    }
+
+    public void setDeath(boolean death) {
+        this.death = death;
+    }
+
+    public String getTonGiao() {
+        return tonGiao;
+    }
+
+    public void setTonGiao(String tonGiao) {
+        this.tonGiao = tonGiao;
     }
 }

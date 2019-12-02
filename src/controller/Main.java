@@ -17,7 +17,6 @@ public class Main extends Application {
     public static List<SoHoKhau> soHoKhauArrayList = new ArrayList<>();
     public static List<NhanKhau> nhanKhauArrayList = new ArrayList<>();
 
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/quanLyHoKhau.fxml"));

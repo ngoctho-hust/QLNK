@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.SoHoKhau;
 
@@ -43,6 +44,12 @@ public class ControllerQLHK implements Initializable {
     private TextField txtTimKiem;
     @FXML
     private Button btnQLNK;
+    @FXML
+    private Button btnChinhSua;
+    @FXML
+    private Button btnThemMoiSHK;
+    @FXML
+    private Button btnThongKe;
 
     private ObservableList<SoHoKhau> soHoKhauObservableList;
 
@@ -75,6 +82,27 @@ public class ControllerQLHK implements Initializable {
             }
 
         });
+
+        btnChinhSua.setOnAction(actionEvent-> {
+//            ObservableList<SoHoKhau> soHoKhaus = tableViewHoKhau.getSelectionModel().getSelectedItems();
+//            System.out.println(soHoKhaus.get(0).getTenChuHo());
+            Parent parent = null;
+            try {
+                parent = FXMLLoader.load(getClass().getResource("/view/SuasoHK.fxml"));
+                Scene scene = new Scene(parent);
+                Stage stageChinhSua = new Stage();
+                Image image = new Image("/drawable/icon.png");
+                stageChinhSua.getIcons().add(image);
+                stageChinhSua.setTitle("Chỉnh sửa");
+                stageChinhSua.setScene(scene);
+                stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+                stageChinhSua.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         FilteredList<SoHoKhau> filteredList = new FilteredList<>(soHoKhauObservableList, p ->true);
         txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
             filteredList.setPredicate(soHoKhau->{

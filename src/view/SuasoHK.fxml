@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAddNhanKhau">
+   <children>
+      <Text layoutX="283.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm nhân khẩu " wrappingWidth="256.13671875" />
+      <Text layoutX="73.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên  :" wrappingWidth="106.13671875" />
+      <TextField fx:id="tfHoTen" layoutX="156.0" layoutY="73.0" />
+      <Text layoutX="370.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh:" wrappingWidth="82.380859375" />
+      <Text layoutX="68.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Quê quán:" />
+      <Text layoutX="68.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Dân tộc:" />
+      <Text layoutX="370.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CMND/CCCD:" />
+      <TextField fx:id="tfNgaySinh" layoutX="474.0" layoutY="103.0" />
+      <TextField fx:id="tfQueQuan" layoutX="156.0" layoutY="132.0" />
+      <TextField fx:id="tfDanToc" layoutX="156.0" layoutY="198.0" />
+      <TextField fx:id="tfCMND" layoutX="474.0" layoutY="164.0" />
+      <Button fx:id="ADDBUTTON" layoutX="251.0" layoutY="300.0" mnemonicParsing="false" onAction="#addArrayList" text="add" />
+      <Text layoutX="71.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp:" />
+      <Text layoutX="370.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi làm việc:" wrappingWidth="117.13671875" />
+      <TextField fx:id="tfNgheNghiep" layoutX="156.0" layoutY="230.0" />
+      <TextField fx:id="tfNoiLamViec" layoutX="474.0" layoutY="230.0" />
+      <Text layoutX="373.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quan hệ:" />
+      <TextField fx:id="tfQuanHe" layoutX="474.0" layoutY="73.0" />
+      <Text layoutX="372.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn Giáo:" />
+      <TextField fx:id="tfTonGiao" layoutX="474.0" layoutY="198.0" />
+      <Text layoutX="68.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Quốc Tịch:" />
+      <Text layoutX="373.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã Nhân Khẩu: " />
+      <Text layoutX="73.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã Hộ Khẩu:" />
+      <Text layoutX="73.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi ở trước khi chuyển đến:" />
+      <Text layoutX="71.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên gọi khác:" />
+      <TextField fx:id="tfQuocTich" layoutX="156.0" layoutY="164.0" />
+      <TextField fx:id="tfMaNhanKhau" layoutX="474.0" layoutY="39.0" />
+      <TextField fx:id="tfMaHoKhau" layoutX="156.0" layoutY="39.0" />
+      <TextField fx:id="tfNoiOTruoc" layoutX="231.0" layoutY="266.0" />
+      <TextField fx:id="tfTenGoiKhac" layoutX="156.0" layoutY="103.0" />
+      <TableView fx:id="tableNhanKhau" layoutX="1.0" layoutY="361.0">
+         <columns>
+            <TableColumn fx:id="colMaHoKhau" prefWidth="61.0" text="Mã Hộ Khẩu" />
+            <TableColumn fx:id="colMaNhanKhau" prefWidth="65.0" text="Mã Nhân Khẩu " />
+            <TableColumn fx:id="colQuanHe" prefWidth="62.0" text="Quan hệ" />
+            <TableColumn fx:id="colHoTen" prefWidth="73.0" text="Họ Tên" />
+            <TableColumn fx:id="colTenGoiKhac" prefWidth="95.0" text="Họ Tên Khác" />
+            <TableColumn fx:id="colNgaySinh" prefWidth="65.0" text="Ngày Sinh" />
+            <TableColumn fx:id="colQuocTich" prefWidth="57.0" text="Quốc Tịch" />
+            <TableColumn fx:id="colCMND" prefWidth="78.0" text="CMND/CCCD" />
+            <TableColumn fx:id="colGioiTinh" prefWidth="66.0" text="Giới Tính" />
+            <TableColumn fx:id="colQueQuan" prefWidth="56.0" text="Quê Quán" />
+            <TableColumn fx:id="colDanToc" prefWidth="53.0" text="Dân Tộc" />
+            <TableColumn fx:id="colTonGiao" prefWidth="56.0" text="Tôn Giáo" />
+            <TableColumn fx:id="colNgheNghiep" prefWidth="84.0" text="Nghề Nghiệp" />
+            <TableColumn fx:id="colNoiLamViec" prefWidth="87.0" text="Nơi Làm Việc" />
+            <TableColumn fx:id="colNoiOTruoc" prefWidth="79.0" text="Nơi ở trước khi chuyển đến" />
+            <TableColumn fx:id="colDeath" prefWidth="45.0" text="death?" />
+         </columns>
+      </TableView>
+      <Text layoutX="373.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính:" />
+      <Button fx:id="butReMove" layoutX="457.0" layoutY="300.0" mnemonicParsing="false" onAction="#buttonReMove" text="remove" />
+      <ComboBox fx:id="comboGioiTinh" layoutX="474.0" layoutY="132.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
