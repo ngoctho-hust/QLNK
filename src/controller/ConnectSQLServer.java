@@ -31,10 +31,10 @@ public class ConnectSQLServer {
         }
 
     }
-    public Connection getConnect(String dbURL, String userNaem, String password){
+    public Connection getConnect(String dbURL, String userName, String password){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection connection = DriverManager.getConnection(DB_URL, userNaem, password);
+            Connection connection = DriverManager.getConnection(DB_URL, userName, password);
             System.out.println("Connect database successful");
             return connection;
         } catch (Exception e) {
