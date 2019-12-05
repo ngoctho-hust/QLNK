@@ -104,6 +104,15 @@ public class ConnectSQLServer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("update SoHoKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh="+ngaySinh+", GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
+            System.out.println("update NhanKhau complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
