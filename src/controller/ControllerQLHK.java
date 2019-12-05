@@ -12,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -25,6 +22,7 @@ import model.SoHoKhau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLHK implements Initializable {
@@ -50,8 +48,11 @@ public class ControllerQLHK implements Initializable {
     private Button btnThemMoiSHK;
     @FXML
     private Button btnThongKe;
+    @FXML
+    private Button btnXoa;
 
     private ObservableList<SoHoKhau> soHoKhauObservableList;
+    ConnectSQLServer cndb =  new ConnectSQLServer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,9 +64,7 @@ public class ControllerQLHK implements Initializable {
 
 
         soHoKhauObservableList = FXCollections.observableList(Main.soHoKhauArrayList);
-
-        ConnectSQLServer cndb =  new ConnectSQLServer();
-        cndb.pullData();
+        refreshTable();
 
         btnQLNK.setOnAction(actionEvent->{
             try {
@@ -103,6 +102,43 @@ public class ControllerQLHK implements Initializable {
             }
         });
 
+        btnXoa.setOnAction(actionEvent->{
+            ObservableList<SoHoKhau> soHoKhaus = tableViewHoKhau.getSelectionModel().getSelectedItems();
+            if (soHoKhaus.get(0) != null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Xoá sổ hộ khẩu");
+                alert.setHeaderText("Bao gồm xoá tất cả các nhân khẩu trong sổ");
+                alert.setContentText("Mã sổ: "+soHoKhaus.get(0).getMaHoKhau()+ "\nTên chủ hộ: " +soHoKhaus.get(0).getTenChuHo());
+                alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
+                alert.showAndWait().ifPresent((btnType)->{
+                    if (btnType == ButtonType.OK){
+                        ConnectSQLServer connectSQLServer = new ConnectSQLServer();
+                        connectSQLServer.xoaSoHoKhau(soHoKhaus.get(0).getMaHoKhau());
+                        refreshTable();
+                    } else if (btnType == ButtonType.CANCEL){
+
+                    }
+
+                });
+            }
+        });
+
+        btnThemMoiSHK.setOnAction(event -> {
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Thêm sổ hộ khẩu");
+            dialog.setContentText("Điền địa chỉ:");
+// Traditional way to get the response value.
+            Optional<String> result = dialog.showAndWait();
+            if(!result.get().equals("")){
+                ConnectSQLServer connectSQLServer = new ConnectSQLServer();
+                connectSQLServer.themSoHoKhau(result.get());
+                refreshTable();
+            }
+        });
+    }
+
+    public void refreshTable(){
+        cndb.pullData();
         FilteredList<SoHoKhau> filteredList = new FilteredList<>(soHoKhauObservableList, p ->true);
         txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
             filteredList.setPredicate(soHoKhau->{
@@ -114,16 +150,17 @@ public class ControllerQLHK implements Initializable {
 
                 if (soHoKhau.getMaHoKhau().toLowerCase().contains(lowerCaseFilter)){
                     return true;
-                } else if(soHoKhau.getTenChuHo().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                } else if(soHoKhau.getCCCD().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
+                } else if(soHoKhau.getTenChuHo()!= null){
+                    if(soHoKhau.getTenChuHo().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    } else if(soHoKhau.getCCCD().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }
                 }
                 return false;
             });
         });
         SortedList<SoHoKhau> hoKhauSortedList = new SortedList<>(filteredList);
-
         hoKhauSortedList.comparatorProperty().bind(tableViewHoKhau.comparatorProperty());
         tableViewHoKhau.setItems(hoKhauSortedList);
     }

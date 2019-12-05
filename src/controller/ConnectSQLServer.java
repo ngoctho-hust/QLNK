@@ -13,7 +13,7 @@ public class ConnectSQLServer {
             +"integratedSecurity=true";
     private static String USER_NAME = "sa";
     private static String PASSWORD = "123456";
-    private static String QUERYHoKhau = "select R2.MaHoKhau, R1.HoTen, R1.MaNhanKhau, R2.NoiThuongTru, R2.SoNhanKhau from NhanKhau R1, SoHoKhau R2 where R1.MaNhanKhau = R2.MaChuHo";
+    private static String QUERYHoKhau = "select R1.MaHoKhau, R2.HoTen, R2.MaNhanKhau, R1.NoiThuongTru, R1.SoNhanKhau from SoHoKhau R1 left join NhanKhau R2 on R1.MaChuHo=R2.MaNhanKhau";
     private static String QUERYNhanKhau = "select * from NhanKhau";
 
 
@@ -54,5 +54,56 @@ public class ConnectSQLServer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void xoaSoHoKhau(String maSoHoKhau){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("delete from NhanKhau where MaHoKhau = " + maSoHoKhau + "delete from SoHoKhau where MaHoKhau = " + maSoHoKhau);
+            System.out.println("delete complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void xoaNhanKhau(String maNhanKhau){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("delete from NhanKhau where MaNhanKhau = " + maNhanKhau);
+            System.out.println("delete NhanKhau complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void themSoHoKhau(String diaChi){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("insert SoHoKhau (NoiThuongTru) values (N'"+diaChi+"')" );
+            System.out.println("insert SHK complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void themNhanKhau(String hoTen, String maHoKhau){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("insert NhanKhau (MaHoKhau, HoTen) values ("+maHoKhau+",N'"+hoTen+"')" );
+            System.out.println("insert NK complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setChuHo(String maHoKhau, String maNhanKhau){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("update SoHoKhau set MaChuHo="+maNhanKhau+"where MaHoKhau="+maHoKhau);
+            System.out.println("set ChuHo complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -20,10 +20,19 @@
                     </columns>
                 </TableView>
                 <TextField fx:id="txtTimKiem" layoutX="133.0" layoutY="112.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="112.0" />
-                <Button fx:id="btnChinhSua" layoutX="1527.0" layoutY="112.0" mnemonicParsing="false" text="Chỉnh sửa" AnchorPane.rightAnchor="287.0" AnchorPane.topAnchor="112.0" />
+                <Button fx:id="btnChinhSua" layoutX="1527.0" layoutY="112.0" mnemonicParsing="false" text="Chỉnh sửa" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="112.0" />
                 <Button fx:id="btnThemMoiNhanKhau" layoutX="737.0" layoutY="112.0" mnemonicParsing="false" text="+ Thêm mới HK" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="112.0" />
                 <Button fx:id="btnThongKe" layoutX="1792.0" layoutY="111.0" mnemonicParsing="false" text="Thống kê" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="111.0" />
                 <Button fx:id="btnQLNK" layoutX="1310.0" layoutY="43.0" mnemonicParsing="false" text="Quản lý hộ khẩu" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="43.0" />
+            <Button fx:id="btnXoa" layoutX="1044.0" layoutY="112.0" mnemonicParsing="false" text="Xoá" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="112.0" />
+            <Text layoutX="133.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÝ HỘ KHẨU" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtHoTen" layoutX="897.0" layoutY="43.0" promptText="Nhập họ tên" AnchorPane.rightAnchor="416.0" AnchorPane.topAnchor="43.0" />
+            <TextField fx:id="txtMaHoKhau" layoutX="1114.0" layoutY="43.0" promptText="Nhập mã sổ hộ khẩu" AnchorPane.rightAnchor="199.0" AnchorPane.topAnchor="43.0" />
+            <Button fx:id="btnSetChuHo" layoutX="951.0" layoutY="112.0" mnemonicParsing="false" text="Đặt làm chủ hộ" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="112.0" />
             </children>
         </AnchorPane>
     </content>

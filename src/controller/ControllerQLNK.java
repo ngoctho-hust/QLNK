@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -23,6 +20,7 @@ import model.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLNK implements Initializable {
@@ -44,8 +42,19 @@ public class ControllerQLNK implements Initializable {
     private Button btnQLNK;
     @FXML
     private Button btnChinhSua;
+    @FXML
+    private Button btnXoa;
+    @FXML
+    private Button btnThemMoiNhanKhau;
+    @FXML
+    private TextField txtHoTen;
+    @FXML
+    private TextField txtMaHoKhau;
+    @FXML
+    private Button btnSetChuHo;
 
     private ObservableList<NhanKhau> NhanKhauObservableList;
+    ConnectSQLServer cndb =  new ConnectSQLServer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,8 +66,7 @@ public class ControllerQLNK implements Initializable {
 
         NhanKhauObservableList = FXCollections.observableList(Main.nhanKhauArrayList);
 
-        ConnectSQLServer cndb =  new ConnectSQLServer();
-        cndb.pullDataNhanKhau();
+        refreshTable();
 
         btnQLNK.setOnAction(actionEvent->{
             try {
@@ -74,23 +82,6 @@ public class ControllerQLNK implements Initializable {
                 e.printStackTrace();
             }
 
-        });
-        FilteredList<NhanKhau> filteredList = new FilteredList<>(NhanKhauObservableList, p ->true);
-        txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
-            filteredList.setPredicate(nhanKhau->{
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (nhanKhau.getMaHoKhau().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                } else if(nhanKhau.getHoTen().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
-                return false;
-            });
         });
 
         btnChinhSua.setOnAction(actionEvent-> {
@@ -111,6 +102,66 @@ public class ControllerQLNK implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        btnXoa.setOnAction(event -> {
+            ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
+            if (nhanKhaus.get(0) != null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Xoá nhân khẩu");
+                alert.setHeaderText("Thông tin nhân khẩu:");
+                alert.setContentText("Mã nhân khẩu: "+nhanKhaus.get(0).getMaNhanKhau()+ "\nHọ và tên: " +nhanKhaus.get(0).getHoTen());
+                alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
+                alert.showAndWait().ifPresent((btnType)->{
+                    if (btnType == ButtonType.OK){
+                        ConnectSQLServer connectSQLServer = new ConnectSQLServer();
+                        connectSQLServer.xoaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+                        refreshTable();
+                    } else if (btnType == ButtonType.CANCEL){
+
+                    }
+                });
+            }
+        });
+
+        btnThemMoiNhanKhau.setOnAction(event -> {
+            if((!txtMaHoKhau.getText().equals("")) && (!txtHoTen.getText().equals(""))){
+                ConnectSQLServer cnt = new ConnectSQLServer();
+                cnt.themNhanKhau(txtHoTen.getText(), txtMaHoKhau.getText());
+
+                txtHoTen.setText(null);
+                txtMaHoKhau.setText(null);
+                refreshTable();
+            }
+        });
+
+        btnSetChuHo.setOnAction(event -> {
+            ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
+            if (nhanKhaus.get(0) != null){
+                ConnectSQLServer cnt= new ConnectSQLServer();
+                cnt.setChuHo(nhanKhaus.get(0).getMaHoKhau(), nhanKhaus.get(0).getMaNhanKhau());
+            }
+        });
+    }
+
+    public void refreshTable(){
+        cndb.pullDataNhanKhau();
+        FilteredList<NhanKhau> filteredList = new FilteredList<>(NhanKhauObservableList, p ->true);
+        txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
+            filteredList.setPredicate(nhanKhau->{
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (nhanKhau.getMaHoKhau().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if(nhanKhau.getHoTen().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
         });
 
         SortedList<NhanKhau> nhanKhaus = new SortedList<>(filteredList);
