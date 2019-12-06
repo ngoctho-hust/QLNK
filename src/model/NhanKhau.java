@@ -15,7 +15,6 @@ public class NhanKhau {
     private String noiLamViec;
     private String noiThuongTruTruocKhiChuyenDen;
     private String cmnd;
-    private boolean death;
     private String tonGiao;
 
 
@@ -137,14 +136,6 @@ public class NhanKhau {
 
     public void setCmnd(String cmnd) {
         this.cmnd = cmnd;
-    }
-
-    public boolean isDeath() {
-        return death;
-    }
-
-    public void setDeath(boolean death) {
-        this.death = death;
     }
 
     public String getTonGiao() {

@@ -54,7 +54,6 @@ public class ControllerQLNK implements Initializable {
     private Button btnSetChuHo;
 
     private ObservableList<NhanKhau> NhanKhauObservableList;
-    ConnectSQLServer cndb =  new ConnectSQLServer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,7 +80,6 @@ public class ControllerQLNK implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         });
 
         btnChinhSua.setOnAction(actionEvent-> {
@@ -114,8 +112,7 @@ public class ControllerQLNK implements Initializable {
                 alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
                 alert.showAndWait().ifPresent((btnType)->{
                     if (btnType == ButtonType.OK){
-                        ConnectSQLServer connectSQLServer = new ConnectSQLServer();
-                        connectSQLServer.xoaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+                        ConnectSQLServer.xoaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
                         refreshTable();
                     } else if (btnType == ButtonType.CANCEL){
 
@@ -126,9 +123,7 @@ public class ControllerQLNK implements Initializable {
 
         btnThemMoiNhanKhau.setOnAction(event -> {
             if((!txtMaHoKhau.getText().equals("")) && (!txtHoTen.getText().equals(""))){
-                ConnectSQLServer cnt = new ConnectSQLServer();
-                cnt.themNhanKhau(txtHoTen.getText(), txtMaHoKhau.getText());
-
+                ConnectSQLServer.themNhanKhau(txtHoTen.getText(), txtMaHoKhau.getText());
                 txtHoTen.setText(null);
                 txtMaHoKhau.setText(null);
                 refreshTable();
@@ -138,14 +133,13 @@ public class ControllerQLNK implements Initializable {
         btnSetChuHo.setOnAction(event -> {
             ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
             if (nhanKhaus.get(0) != null){
-                ConnectSQLServer cnt= new ConnectSQLServer();
-                cnt.setChuHo(nhanKhaus.get(0).getMaHoKhau(), nhanKhaus.get(0).getMaNhanKhau());
+                ConnectSQLServer.setChuHo(nhanKhaus.get(0).getMaHoKhau(), nhanKhaus.get(0).getMaNhanKhau());
             }
         });
     }
 
     public void refreshTable(){
-        cndb.pullDataNhanKhau();
+        ConnectSQLServer.pullDataNhanKhau();
         FilteredList<NhanKhau> filteredList = new FilteredList<>(NhanKhauObservableList, p ->true);
         txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
             filteredList.setPredicate(nhanKhau->{

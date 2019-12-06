@@ -17,7 +17,7 @@ public class ConnectSQLServer {
     private static String QUERYNhanKhau = "select * from NhanKhau";
 
 
-    public void pullData(){
+    public static void pullData(){
         Main.soHoKhauArrayList.removeAll(Main.soHoKhauArrayList);
         try {
             Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
@@ -31,7 +31,7 @@ public class ConnectSQLServer {
         }
 
     }
-    public Connection getConnect(String dbURL, String userName, String password){
+    public static Connection getConnect(String dbURL, String userName, String password){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection connection = DriverManager.getConnection(DB_URL, userName, password);
@@ -42,7 +42,7 @@ public class ConnectSQLServer {
         }
         return null;
     }
-    public void pullDataNhanKhau(){
+    public static void pullDataNhanKhau(){
         Main.nhanKhauArrayList.removeAll(Main.nhanKhauArrayList);
         try {
             Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
@@ -56,7 +56,7 @@ public class ConnectSQLServer {
         }
     }
 
-    public void xoaSoHoKhau(String maSoHoKhau){
+    public static void xoaSoHoKhau(String maSoHoKhau){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
             cnt.createStatement().executeUpdate("delete from NhanKhau where MaHoKhau = " + maSoHoKhau + "delete from SoHoKhau where MaHoKhau = " + maSoHoKhau);
@@ -66,7 +66,7 @@ public class ConnectSQLServer {
         }
     }
 
-    public void xoaNhanKhau(String maNhanKhau){
+    public static void xoaNhanKhau(String maNhanKhau){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
             cnt.createStatement().executeUpdate("delete from NhanKhau where MaNhanKhau = " + maNhanKhau);
@@ -76,17 +76,20 @@ public class ConnectSQLServer {
         }
     }
 
-    public void themSoHoKhau(String diaChi){
+    public static String themSoHoKhau(String diaChi){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
-            cnt.createStatement().executeUpdate("insert SoHoKhau (NoiThuongTru) values (N'"+diaChi+"')" );
+            ResultSet rs = cnt.createStatement().executeQuery("insert into SoHoKhau (NoiThuongTru) values (N'"+diaChi+"'); select SCOPE_IDENTITY() as ID;");
+            rs.next();
             System.out.println("insert SHK complete!");
+            return rs.getString("ID");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return "-1";
     }
 
-    public void themNhanKhau(String hoTen, String maHoKhau){
+    public static void themNhanKhau(String hoTen, String maHoKhau){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
             cnt.createStatement().executeUpdate("insert NhanKhau (MaHoKhau, HoTen) values ("+maHoKhau+",N'"+hoTen+"')" );
@@ -96,7 +99,7 @@ public class ConnectSQLServer {
         }
     }
 
-    public void setChuHo(String maHoKhau, String maNhanKhau){
+    public static void setChuHo(String maHoKhau, String maNhanKhau){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
             cnt.createStatement().executeUpdate("update SoHoKhau set MaChuHo="+maNhanKhau+"where MaHoKhau="+maHoKhau);
@@ -106,11 +109,21 @@ public class ConnectSQLServer {
         }
     }
 
-    public void updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
+    public static void updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
             cnt.createStatement().executeUpdate("update SoHoKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh="+ngaySinh+", GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
             System.out.println("update NhanKhau complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateDiaChi(String maHoKhau, String noiThuongTru){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("update SoHoKhau set NoiThuongTru= N'"+noiThuongTru+"' where MaHoKhau="+maHoKhau);
+            System.out.println("update diachi complete!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

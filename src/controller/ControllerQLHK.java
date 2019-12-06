@@ -4,8 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,7 +50,6 @@ public class ControllerQLHK implements Initializable {
     private Button btnXoa;
 
     private ObservableList<SoHoKhau> soHoKhauObservableList;
-    ConnectSQLServer cndb =  new ConnectSQLServer();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,8 +109,7 @@ public class ControllerQLHK implements Initializable {
                 alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
                 alert.showAndWait().ifPresent((btnType)->{
                     if (btnType == ButtonType.OK){
-                        ConnectSQLServer connectSQLServer = new ConnectSQLServer();
-                        connectSQLServer.xoaSoHoKhau(soHoKhaus.get(0).getMaHoKhau());
+                        ConnectSQLServer.xoaSoHoKhau(soHoKhaus.get(0).getMaHoKhau());
                         refreshTable();
                     } else if (btnType == ButtonType.CANCEL){
 
@@ -129,16 +125,37 @@ public class ControllerQLHK implements Initializable {
             dialog.setContentText("Điền địa chỉ:");
 // Traditional way to get the response value.
             Optional<String> result = dialog.showAndWait();
+            String idSHK="";
             if(!result.get().equals("")){
-                ConnectSQLServer connectSQLServer = new ConnectSQLServer();
-                connectSQLServer.themSoHoKhau(result.get());
+                idSHK = ConnectSQLServer.themSoHoKhau(result.get());
+                System.out.println(idSHK);
                 refreshTable();
+                Parent parent = null;
+                FXMLLoader loader = new FXMLLoader();
+                try {
+                    loader.setLocation(getClass().getResource("/view/SuasoHK.fxml"));
+                    parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    Image image = new Image("/drawable/icon.png");
+                    stageChinhSua.getIcons().add(image);
+                    stageChinhSua.setTitle("Thêm sổ hộ khẩu");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                    ControllerThemSHK controllerThemSHK = loader.getController();
+                    controllerThemSHK.setMaVaDiaChiHoKhau(idSHK, result.get());
+                    stageChinhSua.showAndWait();
+                    refreshTable();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
     public void refreshTable(){
-        cndb.pullData();
+        ConnectSQLServer.pullData();
         FilteredList<SoHoKhau> filteredList = new FilteredList<>(soHoKhauObservableList, p ->true);
         txtTimKiem.textProperty().addListener((observable, oldVable, newValue) ->{
             filteredList.setPredicate(soHoKhau->{
