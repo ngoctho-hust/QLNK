@@ -17,6 +17,17 @@ public class ConnectSQLServer {
     private static String QUERYNhanKhau = "select * from NhanKhau";
 
 
+    public static boolean executeQuery(String query){
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            cnt.createStatement().execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public static void pullData(){
         Main.soHoKhauArrayList.removeAll(Main.soHoKhauArrayList);
         try {
@@ -31,6 +42,21 @@ public class ConnectSQLServer {
         }
 
     }
+
+    public static void pullDataNhanKhauTrongHo(String maHoKhau){
+        Main.nhanKhauTrongHo.removeAll(Main.nhanKhauTrongHo);
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            Statement stm = cnt.createStatement();
+            ResultSet rs = stm.executeQuery("select * from NhanKhau where MaHoKhau = "+maHoKhau);
+            while(rs.next()){
+                Main.nhanKhauTrongHo.add(new NhanKhau(rs.getString("QuanHe"), rs.getString("MaNhanKhau"), rs.getString("HoTen"), rs.getString("NgaySinh"), rs.getString("GioiTinh"), rs.getString("MaHoKhau"), rs.getString("TenGoiKhac"), rs.getString("QueQuan"), rs.getString("DanToc"), rs.getString("QuocTich"), rs.getString("NgheNghiep"),rs.getString("NoiLamViec"), rs.getString("NoiThuongTruTruocKhiChuyenDen"), rs.getString("MaNhanKhau"), rs.getString("TonGiao")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Connection getConnect(String dbURL, String userName, String password){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -89,14 +115,17 @@ public class ConnectSQLServer {
         return "-1";
     }
 
-    public static void themNhanKhau(String hoTen, String maHoKhau){
+    public static boolean themNK(String maHoKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
-            cnt.createStatement().executeUpdate("insert NhanKhau (MaHoKhau, HoTen) values ("+maHoKhau+",N'"+hoTen+"')" );
-            System.out.println("insert NK complete!");
+            cnt.createStatement().executeUpdate("insert into NhanKhau (MaHoKhau, QuanHe, HoTen, NgaySinh, GioiTinh, TenGoiKhac, QueQuan, DanToc, QuocTich, NgheNghiep, NoiLamViec, NoiThuongTruTruocKhiChuyenDen, TonGiao) "+
+                    "values (N'"+maHoKhau+"', N'"+quanHe+"', N'"+hoTen+"', '"+ngaySinh+"', N'"+gioiTinh+"', N'"+tenGoiKhac+"', N'"+queQuan+"', N'"+danToc+"', N'"+quocTich+"', N'"+ngheNghiep+"', N'"+noiLamViec+"', N'"+noiThuongTruTruoc+"', N'"+tonGiao+"')");
+            System.out.println("them NhanKhau complete!");
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     public static void setChuHo(String maHoKhau, String maNhanKhau){
@@ -109,14 +138,16 @@ public class ConnectSQLServer {
         }
     }
 
-    public static void updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
+    public static boolean updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
-            cnt.createStatement().executeUpdate("update SoHoKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh="+ngaySinh+", GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
+            cnt.createStatement().executeUpdate("update SoHoKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh='"+ngaySinh+"', GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
             System.out.println("update NhanKhau complete!");
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     public static void updateDiaChi(String maHoKhau, String noiThuongTru){

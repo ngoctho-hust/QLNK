@@ -18,12 +18,32 @@ public class NhanKhau {
     private String tonGiao;
 
 
+    public NhanKhau() {}
+
     public NhanKhau(String maNhanKhau, String hoTen, String ngaySinh, String gioiTinh, String maHoKhau) {
         this.maNhanKhau = maNhanKhau;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.maHoKhau = maHoKhau;
+    }
+
+    public NhanKhau(String quanHe, String maNhanKhau, String hoTen, String ngaySinh, String gioiTinh, String maHoKhau, String tenGoiKhac, String queQuan, String danToc, String quocTich, String ngheNghiep, String noiLamViec, String noiThuongTruTruocKhiChuyenDen, String cmnd, String tonGiao) {
+        this.quanHe = quanHe;
+        this.maNhanKhau = maNhanKhau;
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.maHoKhau = maHoKhau;
+        this.tenGoiKhac = tenGoiKhac;
+        this.queQuan = queQuan;
+        this.danToc = danToc;
+        this.quocTich = quocTich;
+        this.ngheNghiep = ngheNghiep;
+        this.noiLamViec = noiLamViec;
+        this.noiThuongTruTruocKhiChuyenDen = noiThuongTruTruocKhiChuyenDen;
+        this.cmnd = cmnd;
+        this.tonGiao = tonGiao;
     }
 
     public String getQuanHe() {

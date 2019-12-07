@@ -55,7 +55,7 @@ public class ControllerQLHK implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tableColumnMaHoKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("maHoKhau"));
         tableColumnTenChuHo.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("tenChuHo"));
-        tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("CCCD"));
+        tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("maNhanKhau"));
         tableColumnDiaCHi.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("DiaChi"));
         tableColumnSoNhanKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("soNhanKhau"));
 
@@ -79,23 +79,31 @@ public class ControllerQLHK implements Initializable {
 
         });
 
-        btnChinhSua.setOnAction(actionEvent-> {
-//            ObservableList<SoHoKhau> soHoKhaus = tableViewHoKhau.getSelectionModel().getSelectedItems();
-//            System.out.println(soHoKhaus.get(0).getTenChuHo());
-            Parent parent = null;
-            try {
-                parent = FXMLLoader.load(getClass().getResource("/view/SuasoHK.fxml"));
-                Scene scene = new Scene(parent);
-                Stage stageChinhSua = new Stage();
-                Image image = new Image("/drawable/icon.png");
-                stageChinhSua.getIcons().add(image);
-                stageChinhSua.setTitle("Chỉnh sửa");
-                stageChinhSua.setScene(scene);
-                stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-                stageChinhSua.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+        btnChinhSua.setOnAction(event-> {
+            ObservableList<SoHoKhau> soHoKhaus = tableViewHoKhau.getSelectionModel().getSelectedItems();
+            if (soHoKhaus.get(0)!=null){
+                Main.nhanKhauTrongHo.removeAll(Main.nhanKhauTrongHo);
+                ConnectSQLServer.pullDataNhanKhauTrongHo(soHoKhaus.get(0).getMaHoKhau());
+                Parent parent = null;
+                FXMLLoader loader = new FXMLLoader();
+                try {
+                    loader.setLocation(getClass().getResource("/view/suaSHK.fxml"));
+                    parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    Image image = new Image("/drawable/icon.png");
+                    stageChinhSua.getIcons().add(image);
+                    stageChinhSua.setTitle("Chỉnh sửa sổ hộ khẩu");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                    ControllerSuaSHK controllerSuaSHK = loader.getController();
+                    controllerSuaSHK.setSoHoKhau(soHoKhaus.get(0));
+                    stageChinhSua.showAndWait();
+                    refreshTable();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -133,7 +141,7 @@ public class ControllerQLHK implements Initializable {
                 Parent parent = null;
                 FXMLLoader loader = new FXMLLoader();
                 try {
-                    loader.setLocation(getClass().getResource("/view/SuasoHK.fxml"));
+                    loader.setLocation(getClass().getResource("/view/themSHK.fxml"));
                     parent = loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();

@@ -20,7 +20,6 @@ import model.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLNK implements Initializable {
@@ -87,7 +86,7 @@ public class ControllerQLNK implements Initializable {
 //            System.out.println(soHoKhaus.get(0).getTenChuHo());
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("/view/SuasoHK.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("/view/themSHK.fxml"));
                 Scene scene = new Scene(parent);
                 Stage stageChinhSua = new Stage();
                 Image image = new Image("/drawable/icon.png");
@@ -122,12 +121,6 @@ public class ControllerQLNK implements Initializable {
         });
 
         btnThemMoiNhanKhau.setOnAction(event -> {
-            if((!txtMaHoKhau.getText().equals("")) && (!txtHoTen.getText().equals(""))){
-                ConnectSQLServer.themNhanKhau(txtHoTen.getText(), txtMaHoKhau.getText());
-                txtHoTen.setText(null);
-                txtMaHoKhau.setText(null);
-                refreshTable();
-            }
         });
 
         btnSetChuHo.setOnAction(event -> {

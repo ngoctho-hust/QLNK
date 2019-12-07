@@ -16,6 +16,7 @@ public class Main extends Application {
 
     public static List<SoHoKhau> soHoKhauArrayList = new ArrayList<>();
     public static List<NhanKhau> nhanKhauArrayList = new ArrayList<>();
+    public static List<NhanKhau> nhanKhauTrongHo = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,6 +25,7 @@ public class Main extends Application {
         primaryStage.getIcons().add(image);
         primaryStage.setTitle("QLHK");
         primaryStage.setScene(new Scene(root, 1510, 810));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
