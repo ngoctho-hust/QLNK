@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/quanLyHoKhau.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/SHK/quanLyHoKhau.fxml"));
         Image image = new Image("/drawable/icon.png");
         primaryStage.getIcons().add(image);
         primaryStage.setTitle("QLHK");

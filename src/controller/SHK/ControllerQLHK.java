@@ -1,5 +1,7 @@
-package controller;
+package controller.SHK;
 
+import controller.ConnectSQLServer;
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -65,7 +67,7 @@ public class ControllerQLHK implements Initializable {
 
         btnQLNK.setOnAction(actionEvent->{
             try {
-                Parent blad = FXMLLoader.load(getClass().getResource("/view/quanLyNhanKhau.fxml"));
+                Parent blad = FXMLLoader.load(getClass().getResource("/view/NK/quanLyNhanKhau.fxml"));
                 Scene scene = new Scene(blad);
                 Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Image image = new Image("/drawable/icon.png");
@@ -87,7 +89,7 @@ public class ControllerQLHK implements Initializable {
                 Parent parent = null;
                 FXMLLoader loader = new FXMLLoader();
                 try {
-                    loader.setLocation(getClass().getResource("/view/suaSHK.fxml"));
+                    loader.setLocation(getClass().getResource("/view/SHK/suaSHK.fxml"));
                     parent = loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
@@ -131,7 +133,7 @@ public class ControllerQLHK implements Initializable {
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Thêm sổ hộ khẩu");
             dialog.setContentText("Điền địa chỉ:");
-// Traditional way to get the response value.
+            // Traditional way to get the response value.
             Optional<String> result = dialog.showAndWait();
             String idSHK="";
             if(!result.get().equals("")){
@@ -141,7 +143,7 @@ public class ControllerQLHK implements Initializable {
                 Parent parent = null;
                 FXMLLoader loader = new FXMLLoader();
                 try {
-                    loader.setLocation(getClass().getResource("/view/themSHK.fxml"));
+                    loader.setLocation(getClass().getResource("/view/SHK/themSHK.fxml"));
                     parent = loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();

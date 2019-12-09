@@ -1,5 +1,9 @@
-package controller;
+package controller.NK;
 
+import controller.ConnectSQLServer;
+import controller.Main;
+import controller.SHK.ControllerSuaNK;
+import controller.SHK.ControllerThemNK;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,6 +24,7 @@ import model.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLNK implements Initializable {
@@ -45,12 +50,6 @@ public class ControllerQLNK implements Initializable {
     private Button btnXoa;
     @FXML
     private Button btnThemMoiNhanKhau;
-    @FXML
-    private TextField txtHoTen;
-    @FXML
-    private TextField txtMaHoKhau;
-    @FXML
-    private Button btnSetChuHo;
 
     private ObservableList<NhanKhau> NhanKhauObservableList;
 
@@ -68,7 +67,7 @@ public class ControllerQLNK implements Initializable {
 
         btnQLNK.setOnAction(actionEvent->{
             try {
-                Parent blad = FXMLLoader.load(getClass().getResource("/view/quanLyHoKhau.fxml"));
+                Parent blad = FXMLLoader.load(getClass().getResource("/view/SHK/quanLyHoKhau.fxml"));
                 Scene scene = new Scene(blad);
                 Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Image image = new Image("/drawable/icon.png");
@@ -81,23 +80,31 @@ public class ControllerQLNK implements Initializable {
             }
         });
 
-        btnChinhSua.setOnAction(actionEvent-> {
+        btnChinhSua.setOnAction(event-> {
 //            ObservableList<SoHoKhau> soHoKhaus = tableViewHoKhau.getSelectionModel().getSelectedItems();
 //            System.out.println(soHoKhaus.get(0).getTenChuHo());
-            Parent parent = null;
-            try {
-                parent = FXMLLoader.load(getClass().getResource("/view/themSHK.fxml"));
-                Scene scene = new Scene(parent);
-                Stage stageChinhSua = new Stage();
-                Image image = new Image("/drawable/icon.png");
-                stageChinhSua.getIcons().add(image);
-                stageChinhSua.setTitle("Chỉnh sửa");
-                stageChinhSua.setScene(scene);
-                stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-                stageChinhSua.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+            ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
+            if(nhanKhaus.get(0)!=null){
+                Parent parent = null;
+                FXMLLoader loader = new FXMLLoader();
+                try {
+                    loader.setLocation(getClass().getResource("/view/SHK/suaNK.fxml"));
+                    parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    Image image = new Image("/drawable/icon.png");
+                    stageChinhSua.getIcons().add(image);
+                    stageChinhSua.setTitle("Chỉnh sửa nhân khẩu");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                    ControllerSuaNK controllerSuaNK = loader.getController();
+                    controllerSuaNK.setNhanKhau(nhanKhaus.get(0));
+                    stageChinhSua.showAndWait();
+                    refreshTable();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -121,12 +128,40 @@ public class ControllerQLNK implements Initializable {
         });
 
         btnThemMoiNhanKhau.setOnAction(event -> {
-        });
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Thêm nhân khẩu");
+            dialog.setContentText("Điền mã hộ khẩu:");
+            // Traditional way to get the response value.
+            Optional<String> result = dialog.showAndWait();
+            boolean check = ConnectSQLServer.existSHK(result.get());
+            if (check){
+                Parent parent = null;
+                FXMLLoader loader = new FXMLLoader();
+                try {
+                    loader.setLocation(getClass().getResource("/view/SHK/themNK.fxml"));
+                    parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    Image image = new Image("/drawable/icon.png");
+                    stageChinhSua.getIcons().add(image);
+                    stageChinhSua.setTitle("Thêm nhân khẩu");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                    ControllerThemNK controllerThemNK = loader.getController();
+                    controllerThemNK.setMaHoKhau(result.get());
+                    stageChinhSua.showAndWait();
+                    refreshTable();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setHeaderText("Lỗi");
 
-        btnSetChuHo.setOnAction(event -> {
-            ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
-            if (nhanKhaus.get(0) != null){
-                ConnectSQLServer.setChuHo(nhanKhaus.get(0).getMaHoKhau(), nhanKhaus.get(0).getMaNhanKhau());
+                alert.setContentText("Không tồn tại sổ hộ khẩu");
+                alert.showAndWait();
             }
         });
     }

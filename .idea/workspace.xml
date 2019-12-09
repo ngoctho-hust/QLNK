@@ -3,15 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/ControllerQLHK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/quanLyHoKhau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/quanLyNhanKhau.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ConnectSQLServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ConnectSQLServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerQLHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerQLHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerQLNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerQLNK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerThemSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerThemSHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerQLHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerQLHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerQLNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NK/ControllerQLNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerSuaNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerSuaSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaSHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerThemNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerThemSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHK.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/NhanKhau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/NhanKhau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SuasoHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/themSHK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/quanLyHoKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/quanLyHoKhau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/quanLyNhanKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/NK/quanLyNhanKhau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/suaNK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/suaNK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/suaSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/suaSHK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/themNK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/themNK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/themSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/themSHK.fxml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,6 +95,11 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -93,9 +108,10 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view/NK" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -103,6 +119,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\STUDY\OOP\QLNK\src\view\NK" />
+      <recent name="E:\STUDY\OOP\QLNK\src\view\SHK" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller.NK" />
+      <recent name="controller.SHK" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\STUDY\OOP\QLNK\src\view" />
       <recent name="E:\STUDY\OOP\QLNK\src\model" />
@@ -110,19 +134,13 @@
       <recent name="E:\STUDY\OOP\QLNK\src\drawable" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -135,19 +153,13 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="controller.Main" />
       <module name="QLNK" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="controller.NK.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -195,6 +207,18 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -228,5 +252,27 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="717" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1575886108276">
+      <screen x="0" y="0" width="1920" height="1042" />
+    </state>
+    <state x="717" y="164" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1042@0.0.1920.1042" timestamp="1575886108276" />
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1575887943230">
+      <screen x="0" y="0" width="1920" height="1042" />
+    </state>
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1042@0.0.1920.1042" timestamp="1575887943230" />
+    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1575887943230">
+      <screen x="0" y="0" width="1920" height="1042" />
+    </state>
+    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1042@0.0.1920.1042" timestamp="1575887943230" />
+    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1575887943230">
+      <screen x="0" y="0" width="1920" height="1042" />
+    </state>
+    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1042@0.0.1920.1042" timestamp="1575887943230" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1575887943230">
+      <screen x="0" y="0" width="1920" height="1042" />
+    </state>
+    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1042@0.0.1920.1042" timestamp="1575887943230" />
   </component>
 </project>

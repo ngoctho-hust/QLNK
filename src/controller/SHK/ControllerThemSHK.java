@@ -1,7 +1,9 @@
-package controller;
+package controller.SHK;
 import java.io.IOException;
 import java.lang.String;
 
+import controller.ConnectSQLServer;
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -95,7 +97,7 @@ public class ControllerThemSHK implements Initializable {
 			Parent parent = null;
 			FXMLLoader loader = new FXMLLoader();
 			try {
-				loader.setLocation(getClass().getResource("/view/themNK.fxml"));
+				loader.setLocation(getClass().getResource("/view/SHK/themNK.fxml"));
 				parent = loader.load();
 				Scene scene = new Scene(parent);
 				Stage stageChinhSua = new Stage();
@@ -149,25 +151,27 @@ public class ControllerThemSHK implements Initializable {
 
 		btnChinhSua.setOnAction(event -> {
 			ObservableList<NhanKhau> nhanKhaus = tableNhanKhau.getSelectionModel().getSelectedItems();
-			Parent parent = null;
-			FXMLLoader loader = new FXMLLoader();
-			try {
-				loader.setLocation(getClass().getResource("/view/suaNK.fxml"));
-				parent = loader.load();
-				Scene scene = new Scene(parent);
-				Stage stageChinhSua = new Stage();
-				Image image = new Image("/drawable/icon.png");
-				stageChinhSua.getIcons().add(image);
-				stageChinhSua.setTitle("Chỉnh sửa nhân khẩu");
-				stageChinhSua.setScene(scene);
-				stageChinhSua.initModality(Modality.WINDOW_MODAL);
-				stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
-				ControllerSuaNK controllerSuaNK = loader.getController();
-				controllerSuaNK.setNhanKhau(nhanKhaus.get(0));
-				stageChinhSua.showAndWait();
-				refreshTable();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(nhanKhaus.get(0)!=null){
+				Parent parent = null;
+				FXMLLoader loader = new FXMLLoader();
+				try {
+					loader.setLocation(getClass().getResource("/view/SHK/suaNK.fxml"));
+					parent = loader.load();
+					Scene scene = new Scene(parent);
+					Stage stageChinhSua = new Stage();
+					Image image = new Image("/drawable/icon.png");
+					stageChinhSua.getIcons().add(image);
+					stageChinhSua.setTitle("Chỉnh sửa nhân khẩu");
+					stageChinhSua.setScene(scene);
+					stageChinhSua.initModality(Modality.WINDOW_MODAL);
+					stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+					ControllerSuaNK controllerSuaNK = loader.getController();
+					controllerSuaNK.setNhanKhau(nhanKhaus.get(0));
+					stageChinhSua.showAndWait();
+					refreshTable();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 

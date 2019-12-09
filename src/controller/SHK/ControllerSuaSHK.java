@@ -1,7 +1,9 @@
-package controller;
+package controller.SHK;
 import java.io.IOException;
 import java.lang.String;
 
+import controller.ConnectSQLServer;
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -96,7 +98,7 @@ public class ControllerSuaSHK implements Initializable {
             Parent parent = null;
             FXMLLoader loader = new FXMLLoader();
             try {
-                loader.setLocation(getClass().getResource("/view/themNK.fxml"));
+                loader.setLocation(getClass().getResource("/view/SHK/themNK.fxml"));
                 parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stageChinhSua = new Stage();
@@ -153,7 +155,7 @@ public class ControllerSuaSHK implements Initializable {
             Parent parent = null;
             FXMLLoader loader = new FXMLLoader();
             try {
-                loader.setLocation(getClass().getResource("/view/suaNK.fxml"));
+                loader.setLocation(getClass().getResource("/view/SHK/suaNK.fxml"));
                 parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stageChinhSua = new Stage();

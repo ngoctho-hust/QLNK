@@ -1,5 +1,6 @@
-package controller;
+package controller.SHK;
 
+import controller.ConnectSQLServer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.GioiTinh;
+import model.NgayThangNam;
 import model.NhanKhau;
 import model.SoHoKhau;
 
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class ControllerSuaNK implements Initializable {
     @FXML
-    private Button butAddNhanKhau;
+    private Button butLuuNhanKhau;
     @FXML
     private Button butGoBack;
     @FXML
@@ -69,7 +71,7 @@ public class ControllerSuaNK implements Initializable {
         comboGioiTinh.getSelectionModel().select(1);
     }
 
-    public void ActionAddNhanKhau(ActionEvent event) throws IOException {
+    public void ActionLuuNhanKhau(ActionEvent event) throws IOException {
         String gioiTinh = comboGioiTinh.getSelectionModel().getSelectedItem().toString();
         boolean check = ConnectSQLServer.updateThongTinNhanKhau(nhanKhau.getMaNhanKhau(), tfQuanHe.getText(), tfHoTen.getText(),tfNam.getText()+"-"+tfThang.getText()+"-"+tfNgay.getText(),gioiTinh, tfTenGoiKhac.getText(), tfQueQuan.getText(), tfDanToc.getText(), tfQuocTich.getText(), tfTonGiao.getText(), tfNgheNghiep.getText(), tfNoiLamViec.getText(),tfNoiOTruoc.getText());
         if (check == false){
@@ -100,12 +102,20 @@ public class ControllerSuaNK implements Initializable {
         tfQueQuan.setText(nhanKhau.getQueQuan());
         tfTenGoiKhac.setText(nhanKhau.getTenGoiKhac());
         tfTonGiao.setText(nhanKhau.getTonGiao());
-        if (nhanKhau.getGioiTinh().contains("Nam")){
-            comboGioiTinh.setValue(GioiTinh.MALE);
-        } else if (nhanKhau.getGioiTinh().contains("Nu")){
-            comboGioiTinh.setValue(GioiTinh.FEMALE);
-        } else {
-            comboGioiTinh.setValue(GioiTinh.OTHER);
+        if (nhanKhau.getGioiTinh()!=null){
+            if (nhanKhau.getGioiTinh().contains("Nam")){
+                comboGioiTinh.setValue(GioiTinh.MALE);
+            } else if (nhanKhau.getGioiTinh().contains("Nu")){
+                comboGioiTinh.setValue(GioiTinh.FEMALE);
+            } else {
+                comboGioiTinh.setValue(GioiTinh.OTHER);
+            }
+        }
+        NgayThangNam ngayThangNam = ConnectSQLServer.getNTN(nhanKhau.getMaNhanKhau());
+        if (ngayThangNam != null) {
+            tfNam.setText(ngayThangNam.getNam());
+            tfThang.setText(ngayThangNam.getThang());
+            tfNgay.setText(ngayThangNam.getNgay());
         }
     }
 }

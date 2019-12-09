@@ -1,5 +1,6 @@
 package controller;
 
+import model.NgayThangNam;
 import model.NhanKhau;
 import model.SoHoKhau;
 
@@ -16,6 +17,19 @@ public class ConnectSQLServer {
     private static String QUERYHoKhau = "select R1.MaHoKhau, R2.HoTen, R2.MaNhanKhau, R1.NoiThuongTru, R1.SoNhanKhau from SoHoKhau R1 left join NhanKhau R2 on R1.MaChuHo=R2.MaNhanKhau";
     private static String QUERYNhanKhau = "select * from NhanKhau";
 
+
+    public static boolean existSHK(String maHoKhau){
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            ResultSet rs = cnt.createStatement().executeQuery("select * from SoHoKhau where MaHoKhau="+maHoKhau);
+            rs.next();
+            if (!rs.getString("MaHoKhau").equals("")) return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 
     public static boolean executeQuery(String query){
         try {
@@ -141,7 +155,7 @@ public class ConnectSQLServer {
     public static boolean updateThongTinNhanKhau(String maNhanKhau, String quanHe, String hoTen, String ngaySinh, String gioiTinh, String tenGoiKhac, String queQuan, String danToc, String quocTich, String tonGiao, String ngheNghiep, String noiLamViec, String noiThuongTruTruoc){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
-            cnt.createStatement().executeUpdate("update SoHoKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh='"+ngaySinh+"', GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
+            cnt.createStatement().executeUpdate("update NhanKhau set QuanHe=N'"+quanHe+"', HoTen=N'"+hoTen+"', NgaySinh='"+ngaySinh+"', GioiTinh=N'"+gioiTinh+"', TenGoiKhac=N'"+tenGoiKhac+"', QueQuan=N'"+queQuan+"', DanToc=N'"+danToc+"', QuocTich=N'"+quocTich+"', TonGiao=N'"+tonGiao+"', NgheNghiep=N'"+ngheNghiep+"', NoiLamViec=N'"+noiLamViec+"', NoiThuongTruTruocKhiChuyenDen=N'"+noiThuongTruTruoc+"' where MaNhanKhau="+maNhanKhau);
             System.out.println("update NhanKhau complete!");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -158,5 +172,19 @@ public class ConnectSQLServer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static NgayThangNam getNTN(String maNhanKhau){
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            Statement stm = cnt.createStatement();
+            ResultSet rs = stm.executeQuery("select FORMAT(NgaySinh, 'yyyy') as nam, FORMAT(NgaySinh, 'MM') as thang, FORMAT(NgaySinh, 'dd') as ngay from NhanKhau where MaNhanKhau="+maNhanKhau);
+            while(rs.next()){
+                return new NgayThangNam(rs.getString("ngay"), rs.getString("thang"), rs.getString("nam"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
