@@ -1,6 +1,6 @@
 package controller.NK;
 
-import controller.ConnectSQLServer;
+import model.ConnectSQLServer;
 import controller.Main;
 import controller.SHK.ControllerSuaNK;
 import controller.SHK.ControllerThemNK;
@@ -128,41 +128,59 @@ public class ControllerQLNK implements Initializable {
         });
 
         btnThemMoiNhanKhau.setOnAction(event -> {
-            TextInputDialog dialog = new TextInputDialog("");
-            dialog.setTitle("Thêm nhân khẩu");
-            dialog.setContentText("Điền mã hộ khẩu:");
-            // Traditional way to get the response value.
-            Optional<String> result = dialog.showAndWait();
-            boolean check = ConnectSQLServer.existSHK(result.get());
-            if (check){
-                Parent parent = null;
-                FXMLLoader loader = new FXMLLoader();
-                try {
-                    loader.setLocation(getClass().getResource("/view/SHK/themNK.fxml"));
-                    parent = loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    Image image = new Image("/drawable/icon.png");
-                    stageChinhSua.getIcons().add(image);
-                    stageChinhSua.setTitle("Thêm nhân khẩu");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
-                    ControllerThemNK controllerThemNK = loader.getController();
-                    controllerThemNK.setMaHoKhau(result.get());
-                    stageChinhSua.showAndWait();
-                    refreshTable();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("");
-                alert.setHeaderText("Lỗi");
-
-                alert.setContentText("Không tồn tại sổ hộ khẩu");
-                alert.showAndWait();
+            Parent parent = null;
+            FXMLLoader loader = new FXMLLoader();
+            try {
+                loader.setLocation(getClass().getResource("/view/NK/chonSHK.fxml"));
+                parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stageChinhSua = new Stage();
+                Image image = new Image("/drawable/icon.png");
+                stageChinhSua.getIcons().add(image);
+                stageChinhSua.setTitle("Chọn SHK");
+                stageChinhSua.setScene(scene);
+                stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                stageChinhSua.showAndWait();
+                refreshTable();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+//            TextInputDialog dialog = new TextInputDialog("");
+//            dialog.setTitle("Thêm nhân khẩu");
+//            dialog.setContentText("Điền mã hộ khẩu:");
+//            // Traditional way to get the response value.
+//            Optional<String> result = dialog.showAndWait();
+//            boolean check = ConnectSQLServer.existSHK(result.get());
+//            if (check){
+//                Parent parent = null;
+//                FXMLLoader loader = new FXMLLoader();
+//                try {
+//                    loader.setLocation(getClass().getResource("/view/SHK/themNK.fxml"));
+//                    parent = loader.load();
+//                    Scene scene = new Scene(parent);
+//                    Stage stageChinhSua = new Stage();
+//                    Image image = new Image("/drawable/icon.png");
+//                    stageChinhSua.getIcons().add(image);
+//                    stageChinhSua.setTitle("Thêm nhân khẩu");
+//                    stageChinhSua.setScene(scene);
+//                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+//                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+//                    ControllerThemNK controllerThemNK = loader.getController();
+//                    controllerThemNK.setMaHoKhau(result.get());
+//                    stageChinhSua.showAndWait();
+//                    refreshTable();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            } else {
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("");
+//                alert.setHeaderText("Lỗi");
+//
+//                alert.setContentText("Không tồn tại sổ hộ khẩu");
+//                alert.showAndWait();
+//            }
         });
     }
 

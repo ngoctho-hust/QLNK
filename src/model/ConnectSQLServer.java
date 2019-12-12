@@ -1,5 +1,6 @@
-package controller;
+package model;
 
+import controller.Main;
 import model.NgayThangNam;
 import model.NhanKhau;
 import model.SoHoKhau;
@@ -14,7 +15,7 @@ public class ConnectSQLServer {
             +"integratedSecurity=true";
     private static String USER_NAME = "sa";
     private static String PASSWORD = "123456";
-    private static String QUERYHoKhau = "select R1.MaHoKhau, R2.HoTen, R2.MaNhanKhau, R1.NoiThuongTru, R1.SoNhanKhau from SoHoKhau R1 left join NhanKhau R2 on R1.MaChuHo=R2.MaNhanKhau";
+    private static String QUERYHoKhau = "select R1.MaHoKhau, R2.HoTen, R2.MaNhanKhau as MaNhanKhau, R1.NoiThuongTru, R1.SoNhanKhau from SoHoKhau R1 left join NhanKhau R2 on R1.MaChuHo=R2.MaNhanKhau";
     private static String QUERYNhanKhau = "select * from NhanKhau";
 
 
@@ -186,5 +187,17 @@ public class ConnectSQLServer {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean chuyenHo(String maNhanKhau, String maHoKhau) {
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("update NhanKhau set MaHoKhau= "+maHoKhau+" where MaNhanKhau="+maNhanKhau+"; update SoHoKhau set SoNhanKhau = (select COUNT(*) from NhanKhau where NhanKhau.MaHoKhau= SoHoKhau.MaHoKhau)");
+            System.out.println("ChuyenHo complete!");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -1,6 +1,6 @@
 package controller.SHK;
 
-import controller.ConnectSQLServer;
+import model.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,7 +57,7 @@ public class ControllerQLHK implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tableColumnMaHoKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("maHoKhau"));
         tableColumnTenChuHo.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("tenChuHo"));
-        tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("maNhanKhau"));
+        tableColumnCCCD.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("CCCD"));
         tableColumnDiaCHi.setCellValueFactory(new PropertyValueFactory<SoHoKhau, String>("DiaChi"));
         tableColumnSoNhanKhau.setCellValueFactory(new PropertyValueFactory<SoHoKhau, Integer>("soNhanKhau"));
 
@@ -138,7 +138,6 @@ public class ControllerQLHK implements Initializable {
             String idSHK="";
             if(!result.get().equals("")){
                 idSHK = ConnectSQLServer.themSoHoKhau(result.get());
-                System.out.println(idSHK);
                 refreshTable();
                 Parent parent = null;
                 FXMLLoader loader = new FXMLLoader();

@@ -2,7 +2,7 @@ package controller.SHK;
 import java.io.IOException;
 import java.lang.String;
 
-import controller.ConnectSQLServer;
+import model.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

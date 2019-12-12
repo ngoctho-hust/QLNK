@@ -2,7 +2,7 @@ package controller.SHK;
 import java.io.IOException;
 import java.lang.String;
 
-import controller.ConnectSQLServer;
+import model.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +24,7 @@ import model.*;
 import java.net.URL;
 
 
+import java.util.Optional;
 import java.util.ResourceBundle;
 public class ControllerSuaSHK implements Initializable {
     @FXML
@@ -71,6 +72,10 @@ public class ControllerSuaSHK implements Initializable {
     private Button btnDatLamChuHo;
     @FXML
     private Text textChuHo;
+    @FXML
+    private Button btnChuyenHo;
+    @FXML
+    private Button btnTachHo;
 
 
     private SoHoKhau soHoKhau;
@@ -93,6 +98,7 @@ public class ControllerSuaSHK implements Initializable {
 
         nhankhauObservableList = FXCollections.observableArrayList(Main.nhanKhauTrongHo);
         tableNhanKhau.setItems(nhankhauObservableList);;
+        tableNhanKhau.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         btnThemNhanKhau.setOnAction(event -> {
             Parent parent = null;
@@ -179,6 +185,87 @@ public class ControllerSuaSHK implements Initializable {
             if (nhanKhaus.get(0) != null){
                 ConnectSQLServer.setChuHo(soHoKhau.getMaHoKhau(), nhanKhaus.get(0).getMaNhanKhau());
                 textChuHo.setText(nhanKhaus.get(0).getHoTen());
+            }
+        });
+
+        btnChuyenHo.setOnAction(event -> {
+            ObservableList<NhanKhau> nhanKhaus = tableNhanKhau.getSelectionModel().getSelectedItems();
+            boolean check = false;
+            for (NhanKhau nhanKhau:nhanKhaus
+                 ) {
+                if(nhanKhau.getHoTen().equals(textChuHo.getText())) {
+                    check = true;
+                    break;
+                }
+            }
+            if(check){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Lỗi!");
+                alert.setContentText("Không chuyển được chủ hộ!");
+                alert.showAndWait();
+            } else {
+                if(nhanKhaus.get(0)!=null){
+                    Parent parent = null;
+                    FXMLLoader loader = new FXMLLoader();
+                    try {
+                        loader.setLocation(getClass().getResource("/view/SHK/chonSHKChuyenHo.fxml"));
+                        parent = loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        Image image = new Image("/drawable/icon.png");
+                        stageChinhSua.getIcons().add(image);
+                        stageChinhSua.setTitle("Chọn SHK");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                        ControllerChonSHKChuyenHo controllerChonSHKChuyenHo = loader.getController();
+                        controllerChonSHKChuyenHo.setNhanKhauObservableList(nhanKhaus);
+                        stageChinhSua.showAndWait();
+                        refreshTable();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        btnTachHo.setOnAction(event -> {
+            ObservableList<NhanKhau> nhanKhaus = tableNhanKhau.getSelectionModel().getSelectedItems();
+            if(nhanKhaus.get(0)!=null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Tách hộ");
+                alert.setHeaderText("Bạn có đồng ý tách hộ?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    // ... user chose OK
+                    String idSHK="";
+                    idSHK = ConnectSQLServer.themSoHoKhau("");
+                    for (NhanKhau nhanKhau: nhanKhaus) {
+                        ConnectSQLServer.chuyenHo(nhanKhau.getMaNhanKhau(), idSHK);
+                    }
+                    Parent parent = null;
+                    FXMLLoader loader = new FXMLLoader();
+                    try {
+                        loader.setLocation(getClass().getResource("/view/SHK/themSHKtachHo.fxml"));
+                        parent = loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        Image image = new Image("/drawable/icon.png");
+                        stageChinhSua.getIcons().add(image);
+                        stageChinhSua.setTitle("Sổ hộ khẩu mới");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                        ControllerThemSHKtachHo controllerThemSHKtachHo = loader.getController();
+                        controllerThemSHKtachHo.setInfoTachHo(idSHK);
+                        stageChinhSua.showAndWait();
+                        refreshTable();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    // ... user chose CANCEL or closed the dialog
+                }
             }
         });
     }
