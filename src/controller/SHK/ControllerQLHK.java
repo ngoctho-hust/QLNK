@@ -1,6 +1,6 @@
 package controller.SHK;
 
-import model.ConnectSQLServer;
+import dao.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,6 +1,7 @@
-package model;
+package dao;
 
 import controller.Main;
+import model.GiayKhaiSinh;
 import model.NgayThangNam;
 import model.NhanKhau;
 import model.SoHoKhau;
@@ -50,7 +51,9 @@ public class ConnectSQLServer {
             Statement stm = cnt.createStatement();
             ResultSet rs = stm.executeQuery(QUERYHoKhau);
             while(rs.next()){
-                Main.soHoKhauArrayList.add(new SoHoKhau(rs.getString("MaHoKhau"), rs.getString("HoTen"), rs.getString("MaNhanKhau"), rs.getString("NoiThuongTru"), rs.getInt("SoNhanKhau")));
+                Main.soHoKhauArrayList.add(new SoHoKhau(rs.getString("MaHoKhau"),
+                        rs.getString("HoTen"), rs.getString("MaNhanKhau"),
+                        rs.getString("NoiThuongTru"), rs.getInt("SoNhanKhau")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +68,13 @@ public class ConnectSQLServer {
             Statement stm = cnt.createStatement();
             ResultSet rs = stm.executeQuery("select * from NhanKhau where MaHoKhau = "+maHoKhau);
             while(rs.next()){
-                Main.nhanKhauTrongHo.add(new NhanKhau(rs.getString("QuanHe"), rs.getString("MaNhanKhau"), rs.getString("HoTen"), rs.getString("NgaySinh"), rs.getString("GioiTinh"), rs.getString("MaHoKhau"), rs.getString("TenGoiKhac"), rs.getString("QueQuan"), rs.getString("DanToc"), rs.getString("QuocTich"), rs.getString("NgheNghiep"),rs.getString("NoiLamViec"), rs.getString("NoiThuongTruTruocKhiChuyenDen"), rs.getString("MaNhanKhau"), rs.getString("TonGiao")));
+                Main.nhanKhauTrongHo.add(new NhanKhau(rs.getString("QuanHe"),
+                        rs.getString("MaNhanKhau"), rs.getString("HoTen"), rs.getString("NgaySinh"),
+                        rs.getString("GioiTinh"), rs.getString("MaHoKhau"), rs.getString("TenGoiKhac"),
+                        rs.getString("QueQuan"), rs.getString("DanToc"), rs.getString("QuocTich"),
+                        rs.getString("NgheNghiep"),rs.getString("NoiLamViec"),
+                        rs.getString("NoiThuongTruTruocKhiChuyenDen"), rs.getString("MaNhanKhau"),
+                        rs.getString("TonGiao")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -199,5 +208,59 @@ public class ConnectSQLServer {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static GiayKhaiSinh getGKS(String maNhanKhau){
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            Statement stm = cnt.createStatement();
+            ResultSet rs = stm.executeQuery("select * from GiayKhaiSinh where MaNhanKhau="+maNhanKhau);
+            while(rs.next()){
+                GiayKhaiSinh giayKhaiSinh = new GiayKhaiSinh();
+                giayKhaiSinh.setMaNhanKhau(maNhanKhau);
+                giayKhaiSinh.setHoTen(rs.getString("HoTen"));
+                giayKhaiSinh.setNgaySinh(rs.getString("NgaySinh"));
+                giayKhaiSinh.setGioiTinh(rs.getString("GioiTinh"));
+                giayKhaiSinh.setNoiSinh(rs.getString("NoiSinh"));
+                giayKhaiSinh.setDanToc(rs.getString("DanToc"));
+                giayKhaiSinh.setQuocTich(rs.getString("QuocTich"));
+                giayKhaiSinh.setHoTenCha(rs.getString("HoTenCha"));
+                giayKhaiSinh.setDanTocCha(rs.getString("DanTOcCha"));
+                giayKhaiSinh.setQuocTichCha(rs.getString("QuocTichCha"));
+                giayKhaiSinh.setNamSinhCha(rs.getString("NamSinhCha"));
+                giayKhaiSinh.setThuongTruCha(rs.getString("ThuongTruCha"));
+                giayKhaiSinh.setHoTenMe(rs.getString("HoTenMe"));
+                giayKhaiSinh.setDanTocMe(rs.getString("DanTocMe"));
+                giayKhaiSinh.setQuocTichMe(rs.getString("QuocTichMe"));
+                giayKhaiSinh.setNamSinhMe(rs.getString("NamSinhMe"));
+                giayKhaiSinh.setThuongTruMe(rs.getString("ThuongTruMe"));
+                giayKhaiSinh.setNoiDangKy(rs.getString("NoiDangKy"));
+                giayKhaiSinh.setGhiChu(rs.getString("GhiChu"));
+                giayKhaiSinh.setHoTenNguoiDiKhaiSinh(rs.getString("HoTenNguoiDiKhaiSinh"));
+                giayKhaiSinh.setQuanHe(rs.getString("QuanHe"));
+                return giayKhaiSinh;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static boolean themGKS(GiayKhaiSinh giayKhaiSinh){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("insert into GiayKhaiSinh (HoTen, NgaySinh, GioiTinh, NoiSinh, DanToc, QuocTich, HoTenCha, DanTocCha, QuocTichCha, NamSinhCha, ThuongTruCha, HoTenMe, DanTocMe, QuocTichMe, NamSinhMe, ThuongTruMe, NoiDangKy, NgayDangKy, GhiChu, HoTenNguoiDiKhaiSinh, QuanHe, MaNhanKhau) "+
+                    "values (N'"+giayKhaiSinh.getHoTen()+"', '"+giayKhaiSinh.getNgaySinh()+"', N'"+giayKhaiSinh.getGioiTinh()+"', N'"+giayKhaiSinh.getNoiSinh()+"', N'"+
+                    giayKhaiSinh.getDanToc()+"', N'"+giayKhaiSinh.getQuocTich()+"', N'"+giayKhaiSinh.getHoTenCha()+"', N'"+
+                    giayKhaiSinh.getDanTocCha()+"', N'"+giayKhaiSinh.getQuocTichCha()+"', "+giayKhaiSinh.getNamSinhCha()+", N'"+giayKhaiSinh.getThuongTruCha()
+                    +"', N'"+giayKhaiSinh.getHoTenMe()+"', N'"+giayKhaiSinh.getDanTocMe()+"', N'"+giayKhaiSinh.getQuocTichMe()+"'), "+giayKhaiSinh.getNamSinhMe()+
+                    ", N'"+giayKhaiSinh.getThuongTruMe()+"', N'"+giayKhaiSinh.getNoiDangKy()+"', '"+giayKhaiSinh.getNgayDangKy()+"', N'"+
+                    giayKhaiSinh.getGhiChu()+"', N'"+giayKhaiSinh.getHoTenNguoiDiKhaiSinh()+"', N'"+giayKhaiSinh.getQuanHe()+"', N'"+giayKhaiSinh.getMaNhanKhau()+"'");
+            System.out.println("them NhanKhau complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

@@ -2,7 +2,7 @@ package controller.SHK;
 import java.io.IOException;
 import java.lang.String;
 
-import model.ConnectSQLServer;
+import dao.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,6 +71,8 @@ public class ControllerThemSHK implements Initializable {
 	private Button btnDatLamChuHo;
 	@FXML
 	private Text textChuHo;
+	@FXML
+	private Button btnGiayKhaiSinh;
 
 
 	private String maHoKhau;
@@ -180,6 +182,31 @@ public class ControllerThemSHK implements Initializable {
 			if (nhanKhaus.get(0) != null){
 				ConnectSQLServer.setChuHo(maHoKhau, nhanKhaus.get(0).getMaNhanKhau());
 				textChuHo.setText(nhanKhaus.get(0).getHoTen());
+			}
+		});
+
+		btnGiayKhaiSinh.setOnAction(event -> {
+			ObservableList<NhanKhau> nhanKhaus = tableNhanKhau.getSelectionModel().getSelectedItems();
+			if(nhanKhaus.get(0)!=null){
+				Parent parent = null;
+				FXMLLoader loader = new FXMLLoader();
+				try {
+					loader.setLocation(getClass().getResource("/view/SHK/giayKhaiSinh.fxml"));
+					parent = loader.load();
+					Scene scene = new Scene(parent);
+					Stage stageChinhSua = new Stage();
+					Image image = new Image("/drawable/icon.png");
+					stageChinhSua.getIcons().add(image);
+					stageChinhSua.setTitle("Giấy khai sinh");
+					stageChinhSua.setScene(scene);
+					stageChinhSua.initModality(Modality.WINDOW_MODAL);
+					stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+					ControllerGiayKhaiSinh controllerGiayKhaiSinh = loader.getController();
+					controllerGiayKhaiSinh.setMaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+					stageChinhSua.showAndWait();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}

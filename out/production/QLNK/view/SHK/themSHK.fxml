@@ -31,15 +31,16 @@
       </Text>
       <Text layoutX="67.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ thường trú:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="119.0" />
       <TextField fx:id="txtDiaChi" layoutX="198.0" layoutY="114.0" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="114.0" />
-      <Button fx:id="btnThemNhanKhau" layoutX="772.0" layoutY="191.0" mnemonicParsing="false" text="Thêm nhân khẩu" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="191.0" />
+      <Button fx:id="btnThemNhanKhau" layoutX="857.0" layoutY="191.0" mnemonicParsing="false" text="Thêm nhân khẩu" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="191.0" />
       <Button fx:id="btnChinhSua" layoutX="913.0" layoutY="191.0" mnemonicParsing="false" text="Chỉnh sửa" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="191.0" />
       <Button fx:id="btnXoa" layoutX="1009.0" layoutY="191.0" mnemonicParsing="false" text="Xoá" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="191.0" />
       <Button fx:id="btnLuu" layoutX="1076.0" layoutY="77.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="82.0" text="Lưu" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="77.0" />
       <Button fx:id="btnHuy" layoutX="1170.0" layoutY="77.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="68.0" text="Huỷ" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="77.0" />
       <Text layoutX="60.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="86.0" />
       <Text fx:id="textMaHoKhau" layoutX="156.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " AnchorPane.leftAnchor="156.0" AnchorPane.topAnchor="86.0" />
-      <Button fx:id="btnDatLamChuHo" layoutX="808.0" layoutY="191.0" mnemonicParsing="false" text="Đặt làm chủ hộ" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="191.0" />
+      <Button fx:id="btnDatLamChuHo" layoutX="694.0" layoutY="191.0" mnemonicParsing="false" text="Đặt làm chủ hộ" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="191.0" />
       <Text layoutX="60.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chủ hộ:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="158.0" />
       <Text fx:id="textChuHo" layoutX="128.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="158.0" />
+      <Button fx:id="btnGiayKhaiSinh" layoutX="1004.0" layoutY="191.0" mnemonicParsing="false" text="Giấy khai sinh" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="191.0" />
    </children>
 </AnchorPane>

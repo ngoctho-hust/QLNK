@@ -1,8 +1,7 @@
 package controller.NK;
 
 import controller.SHK.ControllerThemNK;
-import javafx.stage.Modality;
-import model.ConnectSQLServer;
+import dao.ConnectSQLServer;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

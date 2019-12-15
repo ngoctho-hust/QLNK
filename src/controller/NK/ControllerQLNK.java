@@ -1,9 +1,9 @@
 package controller.NK;
 
-import model.ConnectSQLServer;
+import controller.SHK.ControllerGiayKhaiSinh;
+import dao.ConnectSQLServer;
 import controller.Main;
 import controller.SHK.ControllerSuaNK;
-import controller.SHK.ControllerThemNK;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,7 +24,6 @@ import model.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLNK implements Initializable {
@@ -50,6 +49,8 @@ public class ControllerQLNK implements Initializable {
     private Button btnXoa;
     @FXML
     private Button btnThemMoiNhanKhau;
+    @FXML
+    private Button btnGiayKhaiSinh;
 
     private ObservableList<NhanKhau> NhanKhauObservableList;
 
@@ -181,6 +182,31 @@ public class ControllerQLNK implements Initializable {
 //                alert.setContentText("Không tồn tại sổ hộ khẩu");
 //                alert.showAndWait();
 //            }
+        });
+
+        btnGiayKhaiSinh.setOnAction(event -> {
+            ObservableList<NhanKhau> nhanKhaus = tableViewNhanKhau.getSelectionModel().getSelectedItems();
+            if(nhanKhaus.get(0)!=null){
+                Parent parent = null;
+                FXMLLoader loader = new FXMLLoader();
+                try {
+                    loader.setLocation(getClass().getResource("/view/SHK/giayKhaiSinh.fxml"));
+                    parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    Image image = new Image("/drawable/icon.png");
+                    stageChinhSua.getIcons().add(image);
+                    stageChinhSua.setTitle("Giấy khai sinh");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                    ControllerGiayKhaiSinh controllerGiayKhaiSinh = loader.getController();
+                    controllerGiayKhaiSinh.setMaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+                    stageChinhSua.showAndWait();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 
