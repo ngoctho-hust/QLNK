@@ -1,80 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="84306e60-7fe0-4f1b-89b8-9a4ae99d2cf3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre8_shaded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/NK/ControllerThongKe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/NK/thongKe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerChonSHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerChonSHK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QLNK.iml" beforeDir="false" afterPath="$PROJECT_DIR$/QLNK.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/META-INF/QLNK.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerQLNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerQLNK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerChonSHKChuyenHo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerChonSHKChuyenHo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerQLHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerQLHK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaNK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaSHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaSHK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemNK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemSHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemSHK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemSHKtachHo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemSHKtachHo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/model/ConnectSQLServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/SHK/themSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/view/SHK/themSHK.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/NK/ControllerChonSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NK/ControllerChonSHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/dao/ConnectSQLServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/dao/ConnectSQLServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/NK/ControllerQLNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NK/ControllerQLNK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerChonSHKChuyenHo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerChonSHKChuyenHo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerQLHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerQLHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaNK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaSHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemNK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHKtachHo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHKtachHo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ConnectSQLServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConnectSQLServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/NK/quanLyNhanKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/NK/quanLyNhanKhau.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SHK/themSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/themSHK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ConnectSQLServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConnectSQLServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SHK/quanLyHoKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/quanLyHoKhau.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
-    <ui_properties converted="true" />
-    <breakpoint_rules converted="true" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -84,21 +34,12 @@
       </list>
     </option>
   </component>
-  <component name="FindManager">
-    <FindUsagesManager>
-      <setting name="OPEN_NEW_TAB" value="false" />
-    </FindUsagesManager>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectId" id="1U3tqcaqlKVZZMVRBV0DSf5qnzW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+  <component name="ProjectId" id="1V1VyM6jMZR03dCxODTP7sFbMLr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -106,109 +47,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="OverrideImplement.combined" value="false" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view/NK" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="dao" />
-      <recent name="controller.SHK" />
-      <recent name="model" />
-      <recent name="controller.NK" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\STUDY\OOP\QLNK\src\view" />
-      <recent name="E:\STUDY\OOP\QLNK\src\model" />
-      <recent name="E:\STUDY\OOP\QLNK\src\controller" />
-      <recent name="E:\STUDY\OOP\QLNK\src\drawable" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\STUDY\OOP\QLNK\src\view\SHK" />
-      <recent name="E:\STUDY\OOP\QLNK\src\view\NK" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="controller.Main" />
       <module name="QLNK" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.SHK.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,71 +83,68 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
-      <created>1359379246138</created>
+      <changelist id="84306e60-7fe0-4f1b-89b8-9a4ae99d2cf3" name="Default Changelist" comment="" />
+      <created>1576420842555</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1359379246138</updated>
-      <workItem from="1359379250712" duration="1302000" />
+      <updated>1576420842555</updated>
+      <workItem from="1576420846244" duration="260000" />
+      <workItem from="1576421123544" duration="236000" />
+      <workItem from="1576484683772" duration="2377000" />
+      <workItem from="1576571373852" duration="293000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1302000" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="717" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1576140264603">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="361" y="75" key="#Project_Structure" timestamp="1576421007206">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="717" y="164" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1042@0.0.1920.1042" timestamp="1576140264603" />
-    <state x="623" y="245" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1576124055583">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="361" y="75" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1576421007206" />
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576420913319">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="623" y="245" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1042@0.0.1920.1042" timestamp="1576124055583" />
-    <state x="708" y="379" width="503" height="296" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1576124056512">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576420913319" />
+    <state x="528" y="286" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1576421105530">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="708" y="379" width="503" height="296" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1042@0.0.1920.1042" timestamp="1576124056512" />
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1576144921869">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="528" y="286" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1536.834@0.0.1536.834" timestamp="1576421105530" />
+    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser" timestamp="1576486949156">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1042@0.0.1920.1042" timestamp="1576144921869" />
-    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1576144921869">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1576486949156" />
+    <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576420905328">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1042@0.0.1920.1042" timestamp="1576144921869" />
-    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1576144921868">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.834@0.0.1536.834" timestamp="1576420905328" />
+    <state x="473" y="158" key="FileChooserDialogImpl" timestamp="1576485647829">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1042@0.0.1920.1042" timestamp="1576144921868" />
-    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1576144921869">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state x="473" y="158" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576485647829" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1576571518315">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1042@0.0.1920.1042" timestamp="1576144921869" />
-    <state x="344" y="60" key="SettingsEditor" timestamp="1576142864010">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1576571518315">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="344" y="60" key="SettingsEditor/0.0.1920.1042@0.0.1920.1042" timestamp="1576142864010" />
-    <state x="539" y="7" width="840" height="1034" key="search.everywhere.popup" timestamp="1576140324902">
-      <screen x="0" y="0" width="1920" height="1042" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1576571518314">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="539" y="7" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1042@0.0.1920.1042" timestamp="1576140324902" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576571518314" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1576571518315">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
+    <state x="470" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1576420848738">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="470" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1576420848738" />
   </component>
 </project>

@@ -7,14 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/jdbc/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="mssql-jdbc-7.4.1.jre8-shaded" level="project" />
   </component>
 </module>

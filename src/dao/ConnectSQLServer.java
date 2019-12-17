@@ -61,6 +61,19 @@ public class ConnectSQLServer {
 
     }
 
+    public static long getSLNamNu(String gioiTinh){
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            Statement stm = cnt.createStatement();
+            ResultSet rs = stm.executeQuery("select count(*) as SL from NhanKhau where GioiTinh = N'"+gioiTinh+"'");
+            rs.next();
+            return rs.getLong("SL");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static void pullDataNhanKhauTrongHo(String maHoKhau){
         Main.nhanKhauTrongHo.removeAll(Main.nhanKhauTrongHo);
         try {

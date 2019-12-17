@@ -24,6 +24,9 @@ import model.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerQLNK implements Initializable {
@@ -51,6 +54,8 @@ public class ControllerQLNK implements Initializable {
     private Button btnThemMoiNhanKhau;
     @FXML
     private Button btnGiayKhaiSinh;
+    @FXML
+    private Button btnThongKe;
 
     private ObservableList<NhanKhau> NhanKhauObservableList;
 
@@ -205,6 +210,61 @@ public class ControllerQLNK implements Initializable {
                     stageChinhSua.showAndWait();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            }
+        });
+
+        btnThongKe.setOnAction(event -> {
+            List<String> choices = new ArrayList<>();
+            choices.add("Giới tính");
+            choices.add("Độ tuổi");
+
+            ChoiceDialog<String> dialog = new ChoiceDialog<>("Giới tính", choices);
+            dialog.setTitle("Thống kê");
+            dialog.setHeaderText("Lựa chọn thống kê");
+            dialog.setContentText("Thống kê theo:");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()){
+                if(result.get().equals("Giới tính")){
+                    Parent parent = null;
+                    FXMLLoader loader = new FXMLLoader();
+                    try {
+                        loader.setLocation(getClass().getResource("/view/NK/thongKe.fxml"));
+                        parent = loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageThongKe = new Stage();
+                        Image image = new Image("/drawable/icon.png");
+                        stageThongKe.getIcons().add(image);
+                        stageThongKe.setTitle("Thống kê theo giới tính");
+                        stageThongKe.setScene(scene);
+                        stageThongKe.initModality(Modality.WINDOW_MODAL);
+                        stageThongKe.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                        stageThongKe.show();
+                        ControllerThongKe controllerThongKe = loader.getController();
+                        controllerThongKe.theoGioiTinh();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if(result.get().equals("Độ tuổi")){
+                    Parent parent = null;
+                    FXMLLoader loader = new FXMLLoader();
+                    try {
+                        loader.setLocation(getClass().getResource("/view/NK/thongKe.fxml"));
+                        parent = loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageThongKe = new Stage();
+                        Image image = new Image("/drawable/icon.png");
+                        stageThongKe.getIcons().add(image);
+                        stageThongKe.setTitle("Thống kê theo giới tính");
+                        stageThongKe.setScene(scene);
+                        stageThongKe.initModality(Modality.WINDOW_MODAL);
+                        stageThongKe.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                        stageThongKe.show();
+                        ControllerThongKe controllerThongKe = loader.getController();
+                        controllerThongKe.theoTuoi();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
