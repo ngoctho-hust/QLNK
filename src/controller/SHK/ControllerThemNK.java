@@ -66,15 +66,23 @@ public class ControllerThemNK implements Initializable {
 
     public void ActionAddNhanKhau(ActionEvent event) throws IOException {
         String gioiTinh = comboGioiTinh.getSelectionModel().getSelectedItem().toString();
-        boolean check = ConnectSQLServer.themNK(maHoKhau, tfQuanHe.getText(), tfHoTen.getText(), tfNam.getText()+"-"+tfThang.getText()+"-"+tfNgay.getText(),gioiTinh, tfTenGoiKhac.getText(), tfQueQuan.getText(), tfDanToc.getText(), tfQuocTich.getText(), tfTonGiao.getText(), tfNgheNghiep.getText(), tfNoiLamViec.getText(), tfNoiOTruoc.getText());
-        if (check == false){
+        if (tfHoTen.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lỗi");
-            alert.setContentText("Sai ngày sinh!");
+            alert.setContentText("Thiếu họ tên!");
             alert.showAndWait();
         } else {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
+            boolean check = ConnectSQLServer.themNK(maHoKhau, tfQuanHe.getText(), tfHoTen.getText(), tfNam.getText()+"-"+tfThang.getText()+"-"+tfNgay.getText(),gioiTinh, tfTenGoiKhac.getText(), tfQueQuan.getText(), tfDanToc.getText(), tfQuocTich.getText(), tfTonGiao.getText(), tfNgheNghiep.getText(), tfNoiLamViec.getText(), tfNoiOTruoc.getText());
+            if (check == false){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lỗi");
+                alert.setContentText("Sai hoặc thiếu ngày sinh!");
+                alert.showAndWait();
+            } else {
+                ConnectSQLServer.updateHistory(maHoKhau, "Thêm mới nhân khẩu:"+tfHoTen.getText());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+            }
         }
     }
     public void ActionGoBack(ActionEvent event) throws IOException{

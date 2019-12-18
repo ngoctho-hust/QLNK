@@ -76,6 +76,8 @@ public class ControllerSuaSHK implements Initializable {
     private Button btnChuyenHo;
     @FXML
     private Button btnTachHo;
+    @FXML
+    private Button btnLichSu;
 
 
     private SoHoKhau soHoKhau;
@@ -132,7 +134,9 @@ public class ControllerSuaSHK implements Initializable {
         });
 
         btnHuy.setOnAction(event -> {
-            ConnectSQLServer.setChuHo(soHoKhau.getMaHoKhau(), soHoKhau.getCCCD());
+            if(soHoKhau.getCCCD()!=null){
+                ConnectSQLServer.setChuHo(soHoKhau.getMaHoKhau(), soHoKhau.getCCCD());
+            }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
         });
@@ -148,6 +152,7 @@ public class ControllerSuaSHK implements Initializable {
                 alert.showAndWait().ifPresent((btnType)->{
                     if (btnType == ButtonType.OK){
                         ConnectSQLServer.xoaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+                        ConnectSQLServer.updateHistory(nhanKhaus.get(0).getMaHoKhau(), "Xoá nhân khẩu:"+nhanKhaus.get(0).getHoTen());
                         refreshTable();
                     } else if (btnType == ButtonType.CANCEL){
 
@@ -242,6 +247,8 @@ public class ControllerSuaSHK implements Initializable {
                     idSHK = ConnectSQLServer.themSoHoKhau("");
                     for (NhanKhau nhanKhau: nhanKhaus) {
                         ConnectSQLServer.chuyenHo(nhanKhau.getMaNhanKhau(), idSHK);
+                        ConnectSQLServer.updateHistory(soHoKhau.getMaHoKhau(), "Nhân khẩu tách hộ: "+nhanKhau.getHoTen());
+                        ConnectSQLServer.updateHistory(idSHK, "Nhân khẩu chuyển đến: "+nhanKhau.getHoTen());
                     }
                     Parent parent = null;
                     FXMLLoader loader = new FXMLLoader();
@@ -266,6 +273,28 @@ public class ControllerSuaSHK implements Initializable {
                 } else {
                     // ... user chose CANCEL or closed the dialog
                 }
+            }
+        });
+
+        btnLichSu.setOnAction(event -> {
+            Parent parent = null;
+            FXMLLoader loader = new FXMLLoader();
+            try {
+                loader.setLocation(getClass().getResource("/view/SHK/history.fxml"));
+                parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stageHistory = new Stage();
+                Image image = new Image("/drawable/icon.png");
+                stageHistory.getIcons().add(image);
+                stageHistory.setTitle("Lịch sử thay đổi nhân khẩu");
+                stageHistory.setScene(scene);
+                stageHistory.initModality(Modality.WINDOW_MODAL);
+                stageHistory.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+                ControllerHistory controllerHistory = loader.getController();
+                controllerHistory.khoiTao(soHoKhau.getMaHoKhau());
+                stageHistory.show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }

@@ -61,6 +61,8 @@ public class ControllerChonSHKChuyenHo implements Initializable {
                 for (NhanKhau nhanKhau: nhanKhauObservableList
                      ) {
                     check = ConnectSQLServer.chuyenHo(nhanKhau.getMaNhanKhau(), soHoKhaus.get(0).getMaHoKhau());
+                    ConnectSQLServer.updateHistory(nhanKhau.getMaHoKhau(), "Nhân khẩu chuyển đi: "+nhanKhau.getHoTen());
+                    ConnectSQLServer.updateHistory(soHoKhaus.get(0).getMaHoKhau(), "Nhân khẩu chuyển đến: "+ nhanKhau.getHoTen());
                 }
                 if(check){
                     check = false;

@@ -2,24 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84306e60-7fe0-4f1b-89b8-9a4ae99d2cf3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre8_shaded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/NK/ControllerThongKe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/NK/thongKe.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QLNK.iml" beforeDir="false" afterPath="$PROJECT_DIR$/QLNK.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QLNK/META-INF/QLNK.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerQLNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerQLNK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerThongKe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/NK/ControllerThongKe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerChuyenHo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaNK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaSHK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerSuaSHK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerTachHo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/controller/SHK/ControllerThemNK.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/QLNK/dao/ConnectSQLServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/dao/ConnectSQLServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/NK/thongKe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/view/NK/thongKe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/SHK/chuyenHo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/SHK/quanLyHoKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/view/SHK/quanLyHoKhau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/SHK/suaSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QLNK/view/SHK/suaSHK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QLNK/view/SHK/tachHo.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/NK/ControllerQLNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NK/ControllerQLNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerChonSHKChuyenHo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerChonSHKChuyenHo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerChuyenHo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerSuaSHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerTachHo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHKtachHo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SHK/ControllerThemSHKtachHo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/ConnectSQLServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConnectSQLServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SHK/quanLyHoKhau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/quanLyHoKhau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SHK/chuyenHo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SHK/suaSHK.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/suaSHK.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SHK/tachHo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SHK/history.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +102,8 @@
       <workItem from="1576420846244" duration="260000" />
       <workItem from="1576421123544" duration="236000" />
       <workItem from="1576484683772" duration="2377000" />
-      <workItem from="1576571373852" duration="293000" />
+      <workItem from="1576571373852" duration="3548000" />
+      <workItem from="1576590588934" duration="5957000" />
     </task>
     <servers />
   </component>
@@ -114,10 +126,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="528" y="286" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1536.834@0.0.1536.834" timestamp="1576421105530" />
-    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser" timestamp="1576486949156">
+    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser" timestamp="1576592237129">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1576486949156" />
+    <state x="574" y="126" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1576592237129" />
     <state x="498" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576420905328">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -126,25 +138,29 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="473" y="158" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576485647829" />
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1576571518315">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1576596555966">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1576571518315">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576596555966" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1576596555966">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1576571518314">
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576596555966" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1576596555966">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576571518314" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1576571518315">
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576596555966" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1576596555966">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576571518315" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576596555966" />
     <state x="470" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1576420848738">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="470" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1576420848738" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1576592448079">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1576592448079" />
   </component>
 </project>

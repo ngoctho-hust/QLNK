@@ -134,6 +134,7 @@ public class ControllerThemSHKtachHo implements Initializable {
                 alert.showAndWait().ifPresent((btnType)->{
                     if (btnType == ButtonType.OK){
                         ConnectSQLServer.xoaNhanKhau(nhanKhaus.get(0).getMaNhanKhau());
+                        ConnectSQLServer.updateHistory(nhanKhaus.get(0).getMaHoKhau(), "Xoá nhân khẩu:"+nhanKhaus.get(0).getHoTen());
                         refreshTable();
                     } else if (btnType == ButtonType.CANCEL){
 

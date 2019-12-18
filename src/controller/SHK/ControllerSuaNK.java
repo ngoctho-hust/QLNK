@@ -87,16 +87,36 @@ public class ControllerSuaNK implements Initializable {
     public void setNhanKhau(NhanKhau nhanKhau){
         this.nhanKhau = nhanKhau;
         textMaHoKhau.setText(nhanKhau.getMaHoKhau());
-        tfDanToc.setText(nhanKhau.getDanToc());
-        tfHoTen.setText(nhanKhau.getHoTen());
-        tfNgheNghiep.setText(nhanKhau.getNgheNghiep());
-        tfNoiLamViec.setText(nhanKhau.getNoiLamViec());
-        tfNoiOTruoc.setText(nhanKhau.getNoiThuongTruTruocKhiChuyenDen());
-        tfQuanHe.setText(nhanKhau.getQuanHe());
-        tfQuocTich.setText(nhanKhau.getQuocTich());
-        tfQueQuan.setText(nhanKhau.getQueQuan());
-        tfTenGoiKhac.setText(nhanKhau.getTenGoiKhac());
-        tfTonGiao.setText(nhanKhau.getTonGiao());
+        if(nhanKhau.getDanToc() != null){
+            tfDanToc.setText(nhanKhau.getDanToc());
+        }
+        if(nhanKhau.getHoTen() != null){
+            tfHoTen.setText(nhanKhau.getHoTen());
+        }
+        if(nhanKhau.getNgheNghiep() != null){
+            tfNgheNghiep.setText(nhanKhau.getNgheNghiep());
+        }
+        if(nhanKhau.getNoiLamViec() != null){
+            tfNoiLamViec.setText(nhanKhau.getNoiLamViec());
+        }
+        if(nhanKhau.getNoiThuongTruTruocKhiChuyenDen() != null){
+            tfNoiOTruoc.setText(nhanKhau.getNoiThuongTruTruocKhiChuyenDen());
+        }
+        if(nhanKhau.getQuanHe() != null){
+            tfQuanHe.setText(nhanKhau.getQuanHe());
+        }
+        if(nhanKhau.getQuocTich() != null){
+            tfQuocTich.setText(nhanKhau.getQuocTich());
+        }
+        if(nhanKhau.getQueQuan() != null){
+            tfQueQuan.setText(nhanKhau.getQueQuan());
+        }
+        if(nhanKhau.getTenGoiKhac() != null){
+            tfTenGoiKhac.setText(nhanKhau.getTenGoiKhac());
+        }
+        if(nhanKhau.getTonGiao() != null){
+            tfTonGiao.setText(nhanKhau.getTonGiao());
+        }
         if (nhanKhau.getGioiTinh()!=null){
             if (nhanKhau.getGioiTinh().contains("Nam")){
                 comboGioiTinh.setValue(GioiTinh.MALE);

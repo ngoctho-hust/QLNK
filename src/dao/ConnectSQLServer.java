@@ -1,14 +1,13 @@
 package dao;
 
 import controller.Main;
-import model.GiayKhaiSinh;
-import model.NgayThangNam;
-import model.NhanKhau;
-import model.SoHoKhau;
+import model.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ConnectSQLServer {
     private static String DB_URL = "jdbc:sqlserver://localhost:1433;"
@@ -112,7 +111,23 @@ public class ConnectSQLServer {
             Statement stm = cnt.createStatement();
             ResultSet rs = stm.executeQuery(QUERYNhanKhau);
             while(rs.next()){
-                Main.nhanKhauArrayList.add(new NhanKhau(rs.getString("MaNhanKhau"), rs.getString("HoTen"), rs.getString("NgaySinh"), rs.getString("GioiTinh"), rs.getString("MaHoKhau")));
+                NhanKhau nhanKhau = new NhanKhau();
+                nhanKhau.setMaNhanKhau(rs.getString("MaNhanKhau"));
+                nhanKhau.setCmnd(rs.getString("MaNhanKhau"));
+                nhanKhau.setMaHoKhau(rs.getString("MaHoKhau"));
+                nhanKhau.setQuanHe(rs.getString("QuanHe"));
+                nhanKhau.setHoTen(rs.getString("HoTen"));
+                nhanKhau.setNgaySinh(rs.getString("NgaySinh"));
+                nhanKhau.setGioiTinh(rs.getString("GioiTinh"));
+                nhanKhau.setTenGoiKhac(rs.getString("TenGoiKhac"));
+                nhanKhau.setQueQuan(rs.getString("QueQuan"));
+                nhanKhau.setDanToc(rs.getString("DanToc"));
+                nhanKhau.setQuocTich(rs.getString("QuocTich"));
+                nhanKhau.setNgheNghiep(rs.getString("NgheNghiep"));
+                nhanKhau.setNoiLamViec(rs.getString("NoiLamViec"));
+                nhanKhau.setNoiThuongTruTruocKhiChuyenDen(rs.getString("NoiThuongTruTruocKhiChuyenDen"));
+                nhanKhau.setTonGiao(rs.getString("TonGiao"));
+                Main.nhanKhauArrayList.add(nhanKhau);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,7 +137,7 @@ public class ConnectSQLServer {
     public static void xoaSoHoKhau(String maSoHoKhau){
         Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
         try {
-            cnt.createStatement().executeUpdate("delete from NhanKhau where MaHoKhau = " + maSoHoKhau + "delete from SoHoKhau where MaHoKhau = " + maSoHoKhau);
+            cnt.createStatement().executeUpdate("delete from NhanKhau where MaHoKhau = " + maSoHoKhau + "delete from SoHoKhau where MaHoKhau = " + maSoHoKhau + "delete from LichSu where MaHoKhau = " + maSoHoKhau);
             System.out.println("delete complete!");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -275,5 +290,35 @@ public class ConnectSQLServer {
             return false;
         }
         return true;
+    }
+
+    public static void updateHistory(String maHoKhau, String content){
+        Connection cnt = getConnect(DB_URL, USER_NAME, PASSWORD);
+        try {
+            cnt.createStatement().executeUpdate("insert into LichSu values ("+maHoKhau+", N'"+content+"', getdate())");
+            System.out.println("update history complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<History> pullHistory(String maHoKhau){
+        List<History> histories= new ArrayList<>();
+        try {
+            Connection cnt=getConnect(DB_URL, USER_NAME, PASSWORD);
+            Statement stm = cnt.createStatement();
+            ResultSet rs = stm.executeQuery("select * from LichSu where MaHoKhau="+maHoKhau);
+            while(rs.next()){
+                History history = new History();
+                history.setMaHoKhau(maHoKhau);
+                history.setNoiDung(rs.getString("NoiDung"));
+                history.setThoiGian(rs.getString("ThoiDiem"));
+                histories.add(history);
+            }
+            return histories;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
